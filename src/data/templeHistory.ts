@@ -1,0 +1,42 @@
+export const templeHistoryData = {
+  hi: [
+    "अठारहवीं (1850 के आस-पास) सदी के मध्य में राजा अमी चन्द राणा जी पूंछ-राजौरी (जम्मू एवं कश्मीर) से यहां पर आये थे। उस समय यहां की रियासत के राजा श्री जय चन्द जी, जो लम्मगराइयां राजा के नाम से भी मशहूर थे, राज किया करते थे। राजा अमी चन्द जी जब उनसे मिले तो उन्होंने इस जगह, जो कि गांव लगदेवी है, उन्हें भेंट कर दी।",
+    "राजा अमी चन्द जी जब यहां पधारे थे तो वे अपने साथ माता शीतला मैया की मूर्ति भी लेकर आये थे। उन्होंने गांव लगदेवी में माता की मूर्ति स्थापित करवाई। शीतला मैया जी की मूर्ति के साथ-साथ वे महाराणा गुग्गा देवता की मूर्ति भी लेकर आये थे, जो माता जी के मंदिर के साथ अलग मंदिर में स्थापित है और जहां लोग पूजा-अर्चना करते हैं।",
+    "राजा अमी चन्द जी जब यहां आये थे तो वे अपने साथ कुछ लोगों को भी लेकर आये थे, जिनमें माता की पूजा के लिए ब्राह्मण तथा साफ-सफाई और देखभाल के लिए अन्य कर्मचारी शामिल थे। इन ब्राह्मणों का एक गांव भी बस गया, जो परनाली के नाम से जाना जाता है।",
+    "माता शीतला जी की महिमा इतनी निराली है कि हिमाचल प्रदेश से ही नहीं, बल्कि दूसरे प्रदेशों से भी श्रद्धालु यहां आकर माता जी के दर्शन करते हैं और अपने मन की मुरादें पूरी होने की कामना करते हैं।",
+    "शीतला मैया लगवाल वंशजों की कुल देवी मानी जाती हैं। समय के साथ लगवालों के कई गांव बस गये। मंदिर के निकट लगभग 15–20 गांव बताए जाते हैं, जिनमें लगदेवी, कड़ियार, फूला दा ग्रां, भटेड, वकनियार, कलोह, भम्बलोह, लडियार आदि शामिल हैं। इन गांवों के निवासियों की कुल देवी शीतला माता हैं।",
+    "इसके अतिरिक्त अनेक परिवार देहरादून, मंडी, कांगड़ा, ज्वाला जी, राजस्थान, दिल्ली तथा अन्य स्थानों पर जाकर बस गये। ये परिवार अपनी कुल देवी के दर्शन के लिए यहां आते हैं और अपनी परंपराओं के अनुसार पूजा अर्चना करते हैं। श्रद्धालु माता शीतला से अपनी मनोकामनाएं मांगते हैं।",
+    "गांव के दो बुजुर्ग, श्री साहणु राम जी एवं श्री रघुनाथ सिंह जी, जिनकी आयु लगभग 105 वर्ष बताई गई, कहा करते थे कि जब वे छोटे थे तब उनके बुजुर्ग बताते थे कि इस मंदिर का निर्माण राजा अमी चन्द जी ने करवाया था।",
+    "मंदिर भवन के निर्माण से जुड़े मिस्त्रियों के रूप में स्वर्गीय तोता राम जी, प्रहलाद जी, बुद्ध जी और सुब्बा जी के नाम बताए जाते हैं। समय के साथ गांववासियों के सहयोग से मंदिर में छोटे-मोटे सुधार होते रहे।",
+    "वर्ष 2011 में मंदिर सुधार सभा कमेटी का गठन किया गया, जिसकी पंजीकृत संख्या 2358/H तथा दिनांक 24 जून 2011 बताया गया है। इसके बाद मंदिर के सुधार के प्रयास जारी रहे।",
+    "वर्ष 2022 में मंदिर के जीर्णोद्धार का कार्य आरंभ किया गया। इसके लिए 8 अगस्त 2022 को एक Working Committee गठित की गई और मंदिर के जीर्णोद्धार का कार्य 2 मार्च 2023 को पूरा किया गया।",
+    "मंदिर के जीर्णोद्धार का ठेका 28 अगस्त 2022 को बिहार के ठेकेदार सुमन को दिया गया। इसका खर्च गांववासियों और क्षेत्रवासियों के सहयोग से उठाया गया।",
+    "इस कार्य में पंडित रमेश चन्द जी परनाली वाले द्वारा अपने प्रिय सुपुत्र स्वर्गीय शास्त्री केशव आचार्य की स्मृति में मुख्य सहयोग किये जाने का उल्लेख है।",
+    "मंदिर प्रांगण में राम परिवार एवं श्याम परिवार की मूर्तियां स्थापित की गईं। पंडित रमेश चन्द जी, श्री राजेन्द्र सिंह (पप्पी), श्री रणजीत सिंह (जीतू) तथा श्री प्रदीप सिंह (हैप्पी) द्वारा मंदिर से संबंधित विभिन्न धार्मिक निर्माण एवं मूर्ति-स्थापना कार्यों में सहयोग का उल्लेख मिलता है।",
+    "मंदिर के पास भोले शंकर जी का मंदिर भी है, जिसे श्रीमती हीरा देवी ने अपने पति श्री जयचन्द की स्मृति में बनवाया।",
+    "मंदिर में सर्वप्रथम पूजा-अर्चना करने वाले पंडितों के विशेष परिवार को भोजकी के नाम से जाना जाता था। लगभग 1950–60 के दौरान उनके यहां से चले जाने के बाद सेवा की जिम्मेदारी पंडित श्री परमानन्द और उनके पुत्र श्री बीरवल राम को सौंपी गई।",
+    "जब वे वृद्ध हुए तो लगभग वर्ष 1980 में अपने घर वापस चले गये। उसके बाद से श्री विद्या सागर जी का परिवार मंदिर में सेवा करता आ रहा है।",
+    "यह मंदिर लगदेवी घाटी में स्थित है और सड़क के बिल्कुल समीप है। मंदिर में हर वर्ष चैत्र मास के नवरात्रों के दौरान भागवत कथा आयोजित की जाती है।",
+    "मां की महिमा अपरम्पार है।"
+  ],
+  en: [
+    "In the mid-eighteenth century (around 1850), Raja Ami Chand Rana arrived here from the Poonch-Rajouri region of Jammu & Kashmir. At that time, Raja Jai Chand, also famously known as the Lammgaraiyan Raja, ruled this princely state. When Raja Ami Chand met him, Raja Jai Chand gifted him this place, which is the village of Lagdevi.",
+    "When Raja Ami Chand arrived here, he brought the idol of Mata Sheetla Maiya with him. He had the idol of the Goddess installed in village Lagdevi. Along with the idol of Sheetla Maiya, he also brought the idol of Maharana Gugga Devta, which is established in a separate temple adjacent to the Goddess's temple, where people offer their prayers.",
+    "Raja Ami Chand also brought some people with him when he came here, including Brahmins for the worship of the Goddess and other staff for cleaning and maintenance. A village of these Brahmins was also established, which is known as Parnali.",
+    "The glory of Mata Sheetla is so unique that devotees not only from Himachal Pradesh but also from other states come here to seek the Goddess's blessings and pray for the fulfillment of their wishes.",
+    "Sheetla Maiya is considered the Kul Devi (patron deity) of the Lagwal descendants. Over time, several villages of the Lagwals were established. There are said to be about 15–20 villages near the temple, including Lagdevi, Kadiyar, Phoola Da Gran, Bhated, Vakaniyar, Kaloh, Bhambloh, and Ladiyar. The Kul Devi of the residents of these villages is Sheetla Mata.",
+    "Additionally, many families settled in Dehradun, Mandi, Kangra, Jwala Ji, Rajasthan, Delhi, and other places. These families come here to seek the blessings of their Kul Devi and perform prayers according to their traditions. Devotees ask Mata Sheetla for the fulfillment of their desires.",
+    "According to local oral tradition, two village elders, Shri Sahnu Ram Ji and Shri Raghunath Singh Ji, whose age was stated to be around 105 years, used to say that when they were young, their elders told them that this temple was built by Raja Ami Chand Ji.",
+    "The historical account records the names of Late Tota Ram Ji, Prahlad Ji, Buddh Ji, and Subba Ji as the craftsmen associated with the construction of the temple building. Over time, minor improvements continued to be made to the temple with the cooperation of the villagers.",
+    "In the year 2011, a Temple Improvement Assembly Committee was formed, with the registered number 2358/H and the date specified as June 24, 2011. Following this, efforts to improve the temple continued.",
+    "In the year 2022, the restoration work of the temple commenced. For this, a Working Committee was constituted on August 8, 2022, and the temple restoration work was completed on March 2, 2023.",
+    "The contract for the temple restoration was given to a contractor named Suman from Bihar on August 28, 2022. The expenses for this were borne with the cooperation of the villagers and the people of the region.",
+    "It is recorded that Pandit Ramesh Chand Ji of Parnali made the primary contribution to this work in memory of his beloved son, the Late Shastri Keshav Acharya.",
+    "Idols of the Ram Pariwar and Shyam Pariwar were installed in the temple courtyard. Mentions are found of the cooperation of Pandit Ramesh Chand Ji, Shri Rajendra Singh (Pappi), Shri Ranjeet Singh (Jeetu), and Shri Pradeep Singh (Happy) in various religious constructions and idol-installation works related to the temple.",
+    "There is also a temple of Bhole Shankar Ji near the temple, which was built by Smt. Heera Devi in memory of her husband Shri Jaichand.",
+    "The specific family of priests who first performed prayers in the temple was known by the name Bhojki. After they left from here around 1950–60, the responsibility of service was entrusted to Pandit Shri Parmanand and his son Shri Beerbal Ram.",
+    "When they grew old, they returned to their home around the year 1980. Since then, the family of Shri Vidya Sagar Ji has been performing the service in the temple.",
+    "This temple is located in the Lagdevi valley and is very close to the road. Every year, during the Chaitra month Navratras, Bhagwat Katha is organized in the temple.",
+    "The glory of the Mother is boundless."
+  ]
+};

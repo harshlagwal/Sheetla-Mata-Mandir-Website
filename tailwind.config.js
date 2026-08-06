@@ -1,0 +1,71 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        surface: '#fff8f6',
+        'surface-dim': '#f8d1cb',
+        'surface-bright': '#fff8f6',
+        'surface-container': '#ffe9e5',
+        'surface-container-low': '#fff0ee',
+        'surface-container-lowest': '#ffffff',
+        'surface-container-high': '#ffe2dd',
+        'surface-container-highest': '#ffdad4',
+        'on-surface': '#2b1613',
+        'on-surface-variant': '#5a413d',
+        'inverse-surface': '#422a26',
+        'inverse-on-surface': '#ffedea',
+        primary: '#570000',
+        'primary-container': '#800000',
+        'on-primary': '#ffffff',
+        'on-primary-container': '#ff8371',
+        'primary-fixed': '#ffdad4',
+        'primary-fixed-dim': '#ffb4a8',
+        'on-primary-fixed': '#410000',
+        secondary: '#8f4e00',
+        'secondary-container': '#fe9832',
+        'on-secondary': '#ffffff',
+        'on-secondary-container': '#683700',
+        'secondary-fixed': '#ffdcc2',
+        'secondary-fixed-dim': '#ffb77a',
+        tertiary: '#735c00',
+        'tertiary-container': '#cba72f',
+        'on-tertiary': '#ffffff',
+        'on-tertiary-container': '#4e3d00',
+        'tertiary-fixed': '#ffe088',
+        'tertiary-fixed-dim': '#e9c349',
+        outline: '#8e706c',
+        'outline-variant': '#e2bfb9',
+        background: '#fff8f6',
+        'on-background': '#2b1613',
+      },
+      fontFamily: {
+        display: ['"Playfair Display"', 'serif'],
+        body: ['Montserrat', 'sans-serif'],
+        hindi: ['"Noto Sans Devanagari"', 'sans-serif'],
+      },
+      spacing: {
+        'container-max': '1280px',
+        'section-gap': '120px',
+        gutter: '24px',
+        'margin-desktop': '64px',
+        'margin-mobile': '20px',
+        'element-gap': '32px',
+      },
+      borderRadius: {
+        'xl': '0.75rem',
+        '2xl': '1rem',
+        '3xl': '1.5rem',
+      },
+      screens: {
+        // Custom navbar breakpoints
+        // nav-compact: hamburger hidden, compact desktop nav shown
+        'nav-compact': '1200px',
+        // nav-full: full 3-zone CSS grid navbar shown
+        'nav-full': '1440px',
+      },
+    },
+  },
+  plugins: [],
+};

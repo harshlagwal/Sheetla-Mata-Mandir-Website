@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    overscroll-behavior: none;
+    background-color: #fff8f6;
+    color: #2b1613;
+  }
+  
+  /* Premium Focus States for Keyboard Navigation */
+  *:focus-visible {
+    outline: 2px solid theme('colors.primary');
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  
+  button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+    border-radius: theme('borderRadius.md');
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fff0ee;
+}
+::-webkit-scrollbar-thumb {
+  background: #8e706c;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #570000;
+}
+
+/* Header Scroll Glass Effect */
+.nav-scrolled {
+  background-color: rgba(255, 248, 246, 0.92) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(87, 0, 0, 0.08);
+}
+
+/* Himachali Border Motif Pattern */
+.pattern-border-bottom {
+  border-bottom: 2px solid #fe9832;
+  position: relative;
+}
+
+.pattern-border-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 6px;
+  background-color: #fe9832;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/* Custom Image Cards Zoom */
+.group-zoom-img {
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.group:hover .group-zoom-img {
+  transform: scale(1.06);
+}
+
+/* Diya Loader Animations */
+@keyframes flame-flicker {
+  0% { transform: scale(1) translateY(0); opacity: 0.85; }
+  25% { transform: scale(1.04) translateY(-1px); opacity: 1; }
+  50% { transform: scale(0.98) translateY(1px); opacity: 0.9; }
+  75% { transform: scale(1.02) translateY(-2px); opacity: 0.95; }
+  100% { transform: scale(1) translateY(0); opacity: 0.85; }
+}
+
+@keyframes flame-sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes fade-up-stagger {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-flame-flicker {
+  animation: flame-flicker 2.5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-flame-sway {
+  animation: flame-sway 3.5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-fade-up-stagger {
+  animation: fade-up-stagger 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+/* Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-flame-flicker,
+  .animate-flame-sway {
+    animation: none;
+    transform: none;
+    opacity: 0.9;
+  }
+  .animate-fade-up-stagger {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
