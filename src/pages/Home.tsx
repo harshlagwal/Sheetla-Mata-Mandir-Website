@@ -16,6 +16,7 @@ import { VillageDroneVideo } from '../components/village/VillageDroneVideo';
 import { SectionReveal } from '../components/motion/SectionReveal';
 import { MotionCard } from '../components/motion/MotionCard';
 import { MotionImage } from '../components/motion/MotionImage';
+import { MantraMarquee } from '../components/common/MantraMarquee';
 
 export const Home: React.FC = () => {
   const { t, isHindi } = useLanguage();
@@ -250,6 +251,9 @@ export const Home: React.FC = () => {
         {/* Bottom breathing room */}
         <div className="h-5 md:h-6 shrink-0 relative z-10" />
       </section>
+
+      {/* SACRED DHYAN MANTRA */}
+      <MantraMarquee />
 
       {/* LATEST TEMPLE UPDATE */}
       <LatestTempleUpdate />

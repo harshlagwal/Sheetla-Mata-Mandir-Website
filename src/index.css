@@ -107,6 +107,21 @@
   opacity: 0;
 }
 
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 24s linear infinite;
+  will-change: transform;
+}
+
+.group:hover .pause {
+  animation-play-state: paused;
+}
+
 /* Respect user preferences */
 @media (prefers-reduced-motion: reduce) {
   .animate-flame-flicker,
@@ -119,5 +134,9 @@
     animation: none;
     opacity: 1;
     transform: none;
+  }
+  .animate-marquee {
+    animation: none;
+    transform: translateX(0);
   }
 }
