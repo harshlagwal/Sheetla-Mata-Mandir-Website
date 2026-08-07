@@ -5,7 +5,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import brandLogo from '../../assets/sheetla mata logo.webp';
 
 // Navbar height: exported so Home.tsx can use the exact same offset value
-const NAVBAR_HEIGHT = 76;
+const NAVBAR_HEIGHT = 68;
 
 export const Navbar: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -101,8 +101,8 @@ export const Navbar: React.FC = () => {
   return (
     <header
       id="main-header"
-      className={`fixed top-3 left-0 right-0 mx-auto z-50 transition-all duration-300 w-[94%] max-w-[1650px] ${
-        mobileMenuOpen ? 'rounded-t-[28px] rounded-b-none' : 'rounded-[28px]'
+      className={`fixed top-4 left-0 right-0 mx-auto z-50 transition-all duration-300 w-[92%] max-w-[1440px] ${
+        mobileMenuOpen ? 'rounded-t-[28px] rounded-b-none' : 'rounded-full'
       } ${
         isHeroMode
           ? 'bg-inverse-surface/20 border border-surface/10 backdrop-blur-md shadow-sm'
