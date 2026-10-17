@@ -7,55 +7,12 @@ import {
   Instagram,
   MessageCircle,
   Share2,
-  Mail
+  Mail,
+  ArrowUp
 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { templeData } from '../../data/temple';
 import brandLogo from '../../assets/sheetla mata logo.webp';
-
-/**
- * Authentic Sacred Lotus (कमल का फूल) Artwork
- * Modeled exactly after the reference design:
- * 5 celestial radiance dots in an upward arch above graceful, blooming lotus petals.
- */
-export const AuthenticLotusArtwork: React.FC<{ className?: string }> = ({ className = "w-full h-full" }) => (
-  <svg
-    viewBox="0 0 600 500"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    className={className}
-    aria-hidden="true"
-  >
-    {/* 5 Celestial Radiance Dots in Arc */}
-    <circle cx="300" cy="50" r="26" />
-    <circle cx="205" cy="92" r="22" />
-    <circle cx="395" cy="92" r="22" />
-    <circle cx="115" cy="165" r="18" />
-    <circle cx="485" cy="165" r="18" />
-
-    {/* Center Sacred Petal */}
-    <path d="M 300 108 C 235 195 230 345 300 465 C 370 345 365 195 300 108 Z" />
-
-    {/* Inner Left Petal */}
-    <path d="M 215 148 C 135 215 120 355 272 470 C 285 405 272 278 215 148 Z" />
-
-    {/* Inner Right Petal */}
-    <path d="M 385 148 C 465 215 480 355 328 470 C 315 405 328 278 385 148 Z" />
-
-    {/* Outer Left Petal */}
-    <path d="M 132 238 C 32 300 28 425 230 482 C 205 422 186 338 132 238 Z" />
-
-    {/* Outer Right Petal */}
-    <path d="M 468 238 C 568 300 572 425 370 482 C 395 422 414 338 468 238 Z" />
-
-    {/* Bottom Flared Base Petals */}
-    <path d="M 64 378 C -25 418 -30 495 180 498 C 122 468 92 422 64 378 Z" />
-    <path d="M 536 378 C 625 418 630 495 420 498 C 478 468 508 422 536 378 Z" />
-
-    {/* Bottom Calyx / Pedicel */}
-    <path d="M 190 478 C 245 510 355 510 410 478 C 360 498 240 498 190 478 Z" />
-  </svg>
-);
 
 export const Footer: React.FC = () => {
   const { t, isHindi } = useLanguage();
@@ -63,9 +20,38 @@ export const Footer: React.FC = () => {
   return (
     <footer className="relative bg-[#86272c] text-white pt-10 pb-28 sm:pb-32 xl:pb-8 overflow-hidden select-none selection:bg-amber-400/30 selection:text-white border-t border-[#6d1d21]">
       
-      {/* ── SACRED LOTUS WATERMARK AT VERY BOTTOM RIGHT CORNER ── */}
-      <div className="absolute -bottom-10 -right-8 sm:-right-4 w-[260px] sm:w-[340px] md:w-[420px] lg:w-[480px] aspect-[6/5] pointer-events-none text-white/[0.09] select-none z-0">
-        <AuthenticLotusArtwork />
+      {/* ── DESKTOP: SACRED LOTUS WATERMARKS (LEFT & RIGHT) ── */}
+      {/* Desktop Left Lotus (Symmetrically mirrored) */}
+      <div className="hidden md:block absolute -bottom-10 -left-10 lg:-left-6 w-[280px] sm:w-[360px] md:w-[420px] lg:w-[480px] aspect-square pointer-events-none select-none z-0 opacity-[0.20] filter drop-shadow-[0_0_35px_rgba(251,191,36,0.22)] transform -scale-x-100">
+        <img
+          src="/sacred-lotus.png"
+          alt="Sacred Blooming Lotus Flower - Left"
+          className="w-full h-full object-contain pointer-events-none"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      {/* Desktop Right Lotus */}
+      <div className="hidden md:block absolute -bottom-10 -right-10 lg:-right-6 w-[280px] sm:w-[360px] md:w-[420px] lg:w-[480px] aspect-square pointer-events-none select-none z-0 opacity-[0.20] filter drop-shadow-[0_0_35px_rgba(251,191,36,0.22)]">
+        <img
+          src="/sacred-lotus.png"
+          alt="Sacred Blooming Lotus Flower - Right"
+          className="w-full h-full object-contain pointer-events-none"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      {/* ── MOBILE UI: SINGLE SACRED LOTUS WATERMARK (CENTER ONLY) ── */}
+      <div className="block md:hidden absolute -bottom-6 left-1/2 -translate-x-1/2 w-[240px] aspect-square pointer-events-none select-none z-0 opacity-[0.16] filter drop-shadow-[0_0_25px_rgba(251,191,36,0.20)]">
+        <img
+          src="/sacred-lotus.png"
+          alt="Sacred Blooming Lotus Flower - Center"
+          className="w-full h-full object-contain pointer-events-none"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
 
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 relative z-10">
@@ -219,6 +205,15 @@ export const Footer: React.FC = () => {
             <span className="font-hindi text-amber-200 font-semibold tracking-wide">
               ॥ ॐ श्री शीतलायै नमः ॥
             </span>
+            <span className="text-white/40">•</span>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="inline-flex items-center gap-1 text-amber-300 hover:text-amber-100 transition-colors py-1 px-2 rounded-md hover:bg-white/10 font-medium cursor-pointer"
+              aria-label={isHindi ? 'वापस ऊपर जाएं' : 'Back to top'}
+            >
+              <ArrowUp className="w-3.5 h-3.5" />
+              <span>{isHindi ? 'वापस ऊपर जाएं' : 'Back to Top'}</span>
+            </button>
           </div>
         </div>
 

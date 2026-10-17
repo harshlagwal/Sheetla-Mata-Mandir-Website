@@ -312,7 +312,7 @@ export const Home: React.FC = () => {
                       <span>{isHindi ? 'सड़क मार्ग से सुगम पहुंच' : 'Direct Road Accessibility'}</span>
                     </div>
                     <p className="text-[11px] text-slate-500 pl-5">
-                      {isHindi ? 'टौणी देवी से मात्र 5 किमी की दूरी • पक्की सड़क' : 'Just 5 km from Tauni Devi • All-weather paved road'}
+                      {isHindi ? 'टौणी देवी से मात्र 8 किमी की दूरी • पक्की सड़क' : 'Just 8 km from Tauni Devi • All-weather paved road'}
                     </p>
                   </div>
                 </div>
@@ -341,7 +341,7 @@ export const Home: React.FC = () => {
                 <div className="space-y-2 mb-6 w-full">
                   <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                    <span>{isHindi ? 'टौणी देवी (बमसन) से मात्र 5 किमी की दूरी' : 'Just 5 km from Tauni Devi (Bamsan)'}</span>
+                    <span>{isHindi ? 'टौणी देवी (बमसन) से मात्र 8 किमी की दूरी' : 'Just 8 km from Tauni Devi (Bamsan)'}</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />

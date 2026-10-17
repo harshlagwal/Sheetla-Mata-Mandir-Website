@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { LanguageProvider } from './context/LanguageContext';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
-import { ScrollToTop } from './components/common/ScrollToTop';
+import { PanditJiGuide } from './components/common/PanditJiGuide';
 import { TempleLoader } from './components/common/TempleLoader';
 import { PageTransition } from './components/motion/PageTransition';
 import { useState } from 'react';
@@ -59,7 +59,7 @@ export function App() {
         <TempleLoader onFinish={() => setIsInitialLoading(false)} />
       )}
       <Router>
-        <ScrollToTop />
+        <PanditJiGuide />
         <div className="min-h-screen flex flex-col justify-between bg-surface font-body text-on-surface">
           <Navbar />
           <main className="flex-grow flex flex-col pb-6 xl:pb-0">
