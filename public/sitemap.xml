@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://sheetla-mata-mandir-website.pages.dev/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Daily Darshan & Aarti Visit Timings -->
+  <url>
+    <loc>https://sheetla-mata-mandir-website.pages.dev/visit</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Temple Lore & History -->
+  <url>
+    <loc>https://sheetla-mata-mandir-website.pages.dev/about</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Mata Sheetla Devi Mahima & Stuti -->
+  <url>
+    <loc>https://sheetla-mata-mandir-website.pages.dev/mata-sheetla</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Annual Festivals, Navratri & 22 May Dangal Mela -->
+  <url>
+    <loc>https://sheetla-mata-mandir-website.pages.dev/festivals</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Online Seva & Daan (Donations) -->
+  <url>
+    <loc>https://sheetla-mata-mandir-website.pages.dev/donate</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Sacred Lagdevi Village & Culture -->
+  <url>
+    <loc>https://sheetla-mata-mandir-website.pages.dev/village</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Photo & Video Darshan Gallery -->
+  <url>
+    <loc>https://sheetla-mata-mandir-website.pages.dev/gallery</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact & Route Directions -->
+  <url>
+    <loc>https://sheetla-mata-mandir-website.pages.dev/contact</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://sheetla-mata-mandir-website.pages.dev/privacy-policy</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://sheetla-mata-mandir-website.pages.dev/terms-of-service</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>

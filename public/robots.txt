@@ -1,0 +1,8 @@
+# Robots.txt for Shri Sheetla Mata Mandir Lagdevi
+# Website: https://sheetla-mata-mandir-website.pages.dev/
+
+User-agent: *
+Allow: /
+
+# Canonical XML Sitemap
+Sitemap: https://sheetla-mata-mandir-website.pages.dev/sitemap.xml
