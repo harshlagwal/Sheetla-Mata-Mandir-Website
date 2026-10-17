@@ -49,57 +49,57 @@ export const JagranPerformers: React.FC = () => {
         <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-6 gap-4 px-4 md:px-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:pb-0">
           
           {/* Card 1: Ansla Jagran Party */}
-          <div className="shrink-0 w-[85vw] md:w-auto snap-center flex flex-col justify-center items-center text-center p-6 md:p-8 rounded-2xl border transition-transform hover:-translate-y-1 bg-white shadow-sm" style={{ borderColor: C.mutedBorder2 }}>
-            <div className="w-12 h-12 rounded-full mb-4 flex items-center justify-center bg-[#fdfbf7] border border-[#5c1616]/10">
-              <Music className="w-5 h-5 opacity-60" style={{ color: C.maroon }} />
+          <div className="shrink-0 w-[85vw] md:w-auto snap-center flex flex-col justify-center items-center text-center p-5 md:p-6 rounded-2xl border transition-transform hover:-translate-y-1 bg-white shadow-xs" style={{ borderColor: C.mutedBorder2 }}>
+            <div className="w-10 h-10 rounded-full mb-3 flex items-center justify-center bg-[#fdfbf7] border border-[#5c1616]/10">
+              <Music className="w-4 h-4 opacity-70" style={{ color: C.maroon }} />
             </div>
-            <h4 className="font-display font-bold text-lg md:text-xl mb-1" style={{ color: C.maroon }}>
+            <h4 className="font-display font-bold text-base md:text-lg mb-1" style={{ color: C.maroon }}>
               {isHindi ? 'अंसला जागरण पार्टी' : 'Ansla Jagran Party'}
             </h4>
-            <p className="font-body text-sm font-medium" style={{ color: C.maroonLight }}>
+            <p className="font-body text-xs md:text-sm font-medium" style={{ color: C.maroonLight }}>
               {isHindi ? 'माता जागरण मंडली' : 'Mata Jagran Party'}
             </p>
           </div>
 
           {/* Card 2: Sharma Musical Group (Featured) */}
-          <div className="shrink-0 w-[85vw] md:w-auto snap-center flex flex-col justify-center items-center text-center p-6 md:p-8 rounded-2xl border-2 relative transition-transform hover:-translate-y-1 shadow-md mt-4 md:mt-0" style={{ background: C.ivoryDeep, borderColor: C.goldBorder }}>
-            <div className="absolute -top-3.5 bg-white border border-[#d4af37] px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
-              <Star className="w-3 h-3 fill-[#d4af37] text-[#d4af37]" />
-              <span className="font-body text-[9px] font-bold uppercase tracking-widest text-[#d4af37]">
+          <div className="shrink-0 w-[85vw] md:w-auto snap-center flex flex-col justify-center items-center text-center p-5 md:p-6 rounded-2xl border-2 relative transition-transform hover:-translate-y-1 shadow-md mt-3 md:mt-0" style={{ background: C.ivoryDeep, borderColor: C.goldBorder }}>
+            <div className="absolute -top-3 bg-white border border-[#d4af37] px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-xs">
+              <Star className="w-2.5 h-2.5 fill-[#d4af37] text-[#d4af37]" />
+              <span className="font-body text-[8.5px] font-bold uppercase tracking-widest text-[#d4af37]">
                 {isHindi ? 'प्रमुख जागरण मंडली' : 'FREQUENT PERFORMER'}
               </span>
             </div>
-            <div className="w-14 h-14 rounded-full mb-4 flex items-center justify-center bg-white border border-[#d4af37]/30 shadow-sm">
-              <Music className="w-6 h-6" style={{ color: C.saffron }} />
+            <div className="w-11 h-11 rounded-full mb-3 flex items-center justify-center bg-white border border-[#d4af37]/30 shadow-xs">
+              <Music className="w-5 h-5" style={{ color: C.saffron }} />
             </div>
-            <h4 className="font-display font-bold text-xl md:text-2xl mb-1" style={{ color: C.maroon }}>
+            <h4 className="font-display font-bold text-lg md:text-xl mb-0.5" style={{ color: C.maroon }}>
               {isHindi ? 'शर्मा म्यूजिकल ग्रुप' : 'Sharma Musical Group'}
             </h4>
-            <p className="font-body text-xs md:text-sm font-bold uppercase tracking-wider mb-5" style={{ color: C.saffron }}>
+            <p className="font-body text-[11px] md:text-xs font-bold uppercase tracking-wider mb-4" style={{ color: C.saffron }}>
               {isHindi ? 'सोलन' : 'SOLAN'}
             </p>
-            <div className="w-full pt-4 border-t" style={{ borderColor: C.mutedBorder2 }}>
-              <span className="font-body text-[10px] font-bold uppercase tracking-widest mb-2 block" style={{ color: C.earthBrown }}>
+            <div className="w-full pt-3 border-t" style={{ borderColor: C.mutedBorder2 }}>
+              <span className="font-body text-[9.5px] font-bold uppercase tracking-widest mb-1.5 block" style={{ color: C.earthBrown }}>
                 {isHindi ? 'गायक:' : 'Singers:'}
               </span>
-              <p className="font-body text-sm font-semibold" style={{ color: C.maroonMid }}>
+              <p className="font-body text-xs md:text-sm font-semibold" style={{ color: C.maroonMid }}>
                 {isHindi ? 'सौरव शर्मा' : 'Saurav Sharma'}
               </p>
-              <p className="font-body text-sm font-semibold mt-1" style={{ color: C.maroonMid }}>
+              <p className="font-body text-xs md:text-sm font-semibold mt-0.5" style={{ color: C.maroonMid }}>
                 {isHindi ? 'गौरव शर्मा' : 'Gaurav Sharma'}
               </p>
             </div>
           </div>
 
           {/* Card 3: Pammi Thakur */}
-          <div className="shrink-0 w-[85vw] md:w-auto snap-center flex flex-col justify-center items-center text-center p-6 md:p-8 rounded-2xl border transition-transform hover:-translate-y-1 bg-white shadow-sm" style={{ borderColor: C.mutedBorder2 }}>
-            <div className="w-12 h-12 rounded-full mb-4 flex items-center justify-center bg-[#fdfbf7] border border-[#5c1616]/10">
-              <Music className="w-5 h-5 opacity-60" style={{ color: C.maroon }} />
+          <div className="shrink-0 w-[85vw] md:w-auto snap-center flex flex-col justify-center items-center text-center p-5 md:p-6 rounded-2xl border transition-transform hover:-translate-y-1 bg-white shadow-xs" style={{ borderColor: C.mutedBorder2 }}>
+            <div className="w-10 h-10 rounded-full mb-3 flex items-center justify-center bg-[#fdfbf7] border border-[#5c1616]/10">
+              <Music className="w-4 h-4 opacity-70" style={{ color: C.maroon }} />
             </div>
-            <h4 className="font-display font-bold text-lg md:text-xl mb-1" style={{ color: C.maroon }}>
+            <h4 className="font-display font-bold text-base md:text-lg mb-1" style={{ color: C.maroon }}>
               {isHindi ? 'पम्मी ठाकुर' : 'Pammi Thakur'}
             </h4>
-            <p className="font-body text-sm font-medium" style={{ color: C.maroonLight }}>
+            <p className="font-body text-xs md:text-sm font-medium" style={{ color: C.maroonLight }}>
               {isHindi ? 'ठाकुर म्यूजिकल ग्रुप' : 'Thakur Musical Group'}
             </p>
           </div>

@@ -5,38 +5,33 @@ const mantraText = "दधिहस्तां सुरभिं सुरू�
 export const MantraMarquee: React.FC = () => {
   return (
     <section 
-      className="w-full px-margin-mobile lg:px-margin-desktop max-w-container-max mx-auto relative z-20 mb-8"
+      className="w-full px-6 max-w-[1240px] mx-auto relative z-20 my-4"
       aria-label="Sacred Dhyan Mantra"
     >
-      <div className="flex flex-col items-center mb-2 md:mb-3">
-        <span className="font-hindi text-[11px] md:text-xs text-primary font-bold tracking-[0.1em] opacity-80 uppercase">
+      <div className="flex flex-col items-center mb-1.5">
+        <span className="font-hindi text-[10px] md:text-[11px] text-amber-800 font-bold tracking-[0.15em] opacity-90 uppercase">
           ॥ श्री शीतला माता ध्यान मंत्र ॥
         </span>
       </div>
       
-      {/* Marquee Container */}
+      {/* Marquee Container - Sleek & Compact */}
       <div 
-        className="w-full h-[55px] md:h-[65px] rounded-[16px] border border-[#e2bfb9]/40 bg-gradient-to-r from-[#FFF9F2] via-[#FFFDF9] to-[#FFF9F2] overflow-hidden flex items-center relative group"
-        style={{
-          boxShadow: '0 4px 20px rgba(87, 0, 0, 0.04)'
-        }}
+        className="w-full h-[46px] md:h-[50px] rounded-xl border border-slate-200/90 bg-white/80 backdrop-blur-md overflow-hidden flex items-center relative group shadow-2xs"
       >
-        {/* Soft edge gradients for seamless fade effect (optional, looks premium) */}
-        <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-[#FFF9F2] to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-[#FFF9F2] to-transparent z-10 pointer-events-none"></div>
+        {/* Soft edge gradients */}
+        <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
         <div className="flex whitespace-nowrap items-center w-max animate-marquee group-hover:pause motion-reduce:animate-none">
-          {/* We render the content block twice to enable seamless infinite scrolling */}
           {[0, 1].map((blockIdx) => (
             <div key={blockIdx} className="flex items-center">
-              {/* Inside each block, we repeat the mantra multiple times */}
               {Array(4).fill(null).map((_, i) => (
                 <React.Fragment key={`${blockIdx}-${i}`}>
-                  <span className="mx-4 md:mx-6 text-lg md:text-xl" role="img" aria-label="lamp">🪔</span>
-                  <span className="font-hindi text-[15px] md:text-[18px] font-[500] text-primary tracking-[0.03em] pb-1">
+                  <span className="mx-3 md:mx-4 text-sm md:text-base select-none" role="img" aria-label="lamp">🪔</span>
+                  <span className="font-hindi text-[13px] md:text-[14px] font-medium text-slate-800 tracking-wide">
                     {mantraText}
                   </span>
-                  <span className="mx-4 md:mx-6 text-[#cba72f] text-sm md:text-base opacity-80" aria-hidden="true">✦</span>
+                  <span className="mx-3 md:mx-4 text-amber-500 text-xs opacity-70 select-none" aria-hidden="true">✦</span>
                 </React.Fragment>
               ))}
             </div>

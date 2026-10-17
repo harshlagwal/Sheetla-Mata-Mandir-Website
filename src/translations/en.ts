@@ -50,7 +50,7 @@ export const en = {
     heroSub: "A sacred place of faith, devotion and togetherness in the heart of Lagdevi.",
     heroHindiText: "आस्था, श्रद्धा और हमारी संस्कृति का पवित्र स्थान",
     welcomeTag: "WELCOME",
-    welcomeHeading: "Welcome to Sheetla Mata Mandir",
+    welcomeHeading: "Welcome to Sheetla Mata Website",
     welcomeText: "Nestled in the serene hills of Himachal Pradesh, our ancient mandir stands as a beacon of spiritual solace and community harmony. Generations have journeyed here to seek the divine blessings of Mata Rani, finding peace within these sacred walls.",
     sacredMandirHeading: "Our Sacred Mandir",
     sacredMandirText: "The architecture of the mandir reflects traditional Himachali craftsmanship, with intricate wood carvings and stone work that have withstood the test of time. It is not just a place of worship, but the cultural heartbeat of Lagdevi village.",
@@ -267,7 +267,7 @@ export const en = {
     proofSentConfirm: "I confirm that I have sent the payment screenshot and transaction details to the Temple Committee on WhatsApp.",
     continueToAckBtn: "Continue to Acknowledgement",
     statusAwaitingVerification: "AWAITING COMMITTEE VERIFICATION",
-    whatsappFailMessage: "Unable to open WhatsApp automatically. Please contact the Temple Committee using the displayed number and include your Donation Reference.",
+    whatsappFailMessage: "Unable to open communication channel automatically. Please contact the Temple Committee via email (lagwalharsh1@gmail.com) and include your Donation Reference.",
     whatsappDisclaimer: "Payment proof and transaction details have been declared as submitted by the devotee to the Temple Committee for manual verification. This acknowledgement does not confirm receipt or verification of funds. Please retain your UPI/bank transaction record as the primary payment proof.",
 
     // Phase 3 Acknowledgement 

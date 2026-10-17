@@ -5,11 +5,24 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   body {
     overscroll-behavior: none;
     background-color: #fff8f6;
     color: #2b1613;
+  }
+
+  /* Ensure all buttons and form controls use Google Sans */
+  button, input, optgroup, select, textarea {
+    font-family: "Plus Jakarta Sans", "Google Sans", sans-serif;
+  }
+
+  /* Clean headings letter-spacing */
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.015em;
   }
   
   /* Premium Focus States for Keyboard Navigation */
@@ -21,6 +34,27 @@
   
   button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
     border-radius: theme('borderRadius.md');
+  }
+}
+
+@layer components {
+  /* Proper Black Liquid Glass Button - Apple & Google Antigravity aesthetic */
+  .btn-liquid-black {
+    @apply relative inline-flex items-center justify-center gap-2.5 px-5 py-2.5 rounded-full font-google text-xs sm:text-sm font-semibold tracking-tight text-white backdrop-blur-xl transition-all duration-300 cursor-pointer active:scale-95;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 50%, #020617 100%);
+    border: 1px solid rgba(71, 85, 105, 0.6);
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.25), inset 0 1.5px 1px rgba(255, 255, 255, 0.14), inset 0 -1px 1px rgba(0, 0, 0, 0.4);
+  }
+  .btn-liquid-black:hover {
+    background: linear-gradient(180deg, #334155 0%, #1e293b 50%, #0f172a 100%);
+    color: #fef3c7;
+    border-color: rgba(100, 116, 139, 0.8);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.4), inset 0 1.5px 1px rgba(255, 255, 255, 0.22);
+  }
+
+  /* Frosted Neutral Liquid Glass Button */
+  .btn-liquid-glass {
+    @apply relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-google text-xs sm:text-sm font-semibold tracking-tight text-slate-800 backdrop-blur-xl transition-all duration-300 cursor-pointer active:scale-95 bg-white/80 hover:bg-white border border-slate-200/90 hover:border-slate-300 shadow-[0_4px_16px_rgba(0,0,0,0.04),inset_0_1.5px_1px_rgba(255,255,255,0.8)];
   }
 }
 

@@ -1,516 +1,763 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MapPin, Compass, HeartHandshake, ArrowRight, Calendar, Clock, Sparkles } from 'lucide-react';
+import {
+  MapPin,
+  HeartHandshake,
+  ArrowRight,
+  Sparkles,
+  Compass,
+  Bell,
+  CheckCircle2,
+  Sun,
+  ExternalLink,
+  ShieldCheck
+} from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
-import { SectionHeading } from '../components/common/SectionHeading';
-import { Button } from '../components/common/Button';
-import { GallerySection } from '../components/common/GallerySection';
-import { eventsData } from '../data/events';
 import { announcementsData } from '../data/announcements';
 import { templeData } from '../data/temple';
-import heroVideo from '../assets/View.mp4';
+import { HeroSlideshow } from '../components/home/HeroSlideshow';
+import { LatestTempleUpdate } from '../components/common/LatestTempleUpdate';
+import { GallerySection } from '../components/common/GallerySection';
+import { Button } from '../components/common/Button';
+
 import lagdeviViewImg from '../assets/lagdevi view.webp';
 import mandirUnderImg from '../assets/mandir under image.webp';
-import { LatestTempleUpdate } from '../components/common/LatestTempleUpdate';
-import { VillageDroneVideo } from '../components/village/VillageDroneVideo';
-import { SectionReveal } from '../components/motion/SectionReveal';
-import { MotionCard } from '../components/motion/MotionCard';
-import { MotionImage } from '../components/motion/MotionImage';
-import { MantraMarquee } from '../components/common/MantraMarquee';
+
+// Smooth staggered animation variants for Welcome Section
+const welcomeContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const welcomeItemVariants = {
+  hidden: { opacity: 0, y: 22 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: [0.21, 0.47, 0.32, 0.98],
+    },
+  },
+};
 
 export const Home: React.FC = () => {
   const { t, isHindi } = useLanguage();
   const navigate = useNavigate();
 
-  const heroRef = useRef<HTMLElement | null>(null);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const isIntersectingRef = useRef<boolean>(true);
-  const [videoReady, setVideoReady] = useState(false);
-  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
-
-  // Viewport-aware video playback & Tab visibility handling
-  useEffect(() => {
-    const video = videoRef.current;
-    const hero = heroRef.current;
-
-    // Check prefers-reduced-motion user preference
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches;
-
-    if (prefersReducedMotion && video) {
-      video.pause();
-      return;
-    }
-
-    if (!video || !hero) return;
-
-    // 1. Intersection Observer for smart play/pause based on Hero visibility
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isIntersectingRef.current = entry.isIntersecting;
-        if (entry.isIntersecting) {
-          if (!document.hidden && !autoplayBlocked) {
-            video.play().catch(() => {
-              setAutoplayBlocked(true);
-            });
-          }
-        } else {
-          video.pause();
-        }
-      },
-      { threshold: 0.25 }
-    );
-
-    observer.observe(hero);
-
-    // 2. Page Visibility API handling (browser tab switch)
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        video.pause();
-      } else {
-        // Resume playback only if hero is currently in viewport
-        if (isIntersectingRef.current && !prefersReducedMotion && !autoplayBlocked) {
-          video.play().catch(() => {
-            setAutoplayBlocked(true);
-          });
-        }
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    return () => {
-      observer.disconnect();
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, [autoplayBlocked]);
-
-  const handleVideoCanPlay = () => {
-    setVideoReady(true);
-  };
-
-  const handleVideoError = () => {
-    setAutoplayBlocked(true);
-  };
-
   return (
-    <div className="w-full">
-      {/* 1. HERO SECTION WITH DRONE VIDEO BACKGROUND */}
-      <section
-        id="hero-section"
-        ref={heroRef}
-        className="relative w-full flex flex-col overflow-hidden -mt-[92px]"
-        style={{ minHeight: 'max(100svh, 660px)' }}
-      >
-        {/* Background Video Layer */}
-        <div className="absolute inset-0 z-0 bg-inverse-surface">
-          {/* Video Layer - mounted always, opacity transitions from 0 to 1 when browser can paint frames */}
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
-            style={{
-              filter: 'brightness(0.82) contrast(1.05)',
-              opacity: videoReady ? 1 : 0,
-              transition: 'opacity 600ms ease-out',
-              willChange: 'opacity',
-            }}
-            onLoadedData={handleVideoCanPlay}
-            onError={handleVideoError}
-          >
-            <source src={heroVideo} type="video/mp4" />
-          </video>
+    <div className="w-full bg-[#fdfbf9] text-slate-900 selection:bg-amber-500/20 selection:text-amber-900 overflow-x-hidden">
+      
+      {/* ══════════════════════════════════════════════════════════════
+          ZONE 1: CINEMATIC HERO & REAL-TIME TEMPLE PULSE
+         ══════════════════════════════════════════════════════════════ */}
+      <HeroSlideshow />
 
-          {/*
-            Gradient layers — deliberately lighter in the centre (where video
-            cinematic text sits) and darker only at the very top (behind navbar)
-            and at the bottom (behind the temple content + info panel).
-          */}
-          {/* Top vignette — only covers the navbar area */}
-          <div
-            className="absolute inset-x-0 top-0 pointer-events-none"
-            style={{
-              height: '22%',
-              background: 'linear-gradient(to bottom, rgba(66,42,38,0.72) 0%, transparent 100%)',
-            }}
-          />
-          {/* Bottom vignette — covers temple content + info panel area */}
-          <div
-            className="absolute inset-x-0 bottom-0 pointer-events-none"
-            style={{
-              height: '55%',
-              background: 'linear-gradient(to top, rgba(66,42,38,0.88) 0%, rgba(66,42,38,0.55) 40%, transparent 100%)',
-            }}
-          />
-          {/* Subtle left/right edge darkening for cinematic look */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.25)_100%)] pointer-events-none" />
-        </div>
-
-        {/*
-          VERTICAL LAYOUT STRATEGY
-          ─────────────────────────
-          [spacer — top 45%]   ← video title (LAGDEVI / HIMACHAL PRADESH) breathes here
-          [temple content]     ← ॥ Jai Mata Di ॥, heading, desc, CTAs
-          [info panel]         ← anchored near bottom
-        */}
-
-        {/* Spacer: pushes content below video's embedded cinematic title */}
-        <div className="flex-1" style={{ minHeight: 'clamp(180px, 42svh, 380px)' }} />
-
-        {/* Hero Content — lower 55% zone */}
-        <div className="relative z-10 max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop w-full flex flex-col items-center text-center pb-6 md:pb-8">
-
-          <span className="font-hindi text-xl md:text-2xl text-tertiary-fixed tracking-widest drop-shadow-lg block mb-3">
-            {t.jaiMataDi}
-          </span>
-
-          <h1
-            className="font-display font-bold text-surface-container-lowest mx-auto drop-shadow-2xl leading-tight"
-            style={{ fontSize: 'clamp(2.25rem, 5.5vw, 5.5rem)', maxWidth: '820px' }}
-          >
-            {t.brandName}
-          </h1>
-
-          <p
-            className="font-body text-surface-container-low mx-auto mt-3 drop-shadow-md font-medium"
-            style={{ fontSize: 'clamp(0.875rem, 1.6vw, 1.1rem)', maxWidth: '850px' }}
-          >
-            {t.home.heroSub}
-          </p>
-
-          <p className="font-hindi text-base md:text-lg text-tertiary-fixed mt-2 font-medium drop-shadow-sm">
-            {t.home.heroHindiText}
-          </p>
-
-          {/* Action CTAs */}
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mt-6 md:mt-7">
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={() => navigate('/about')}
-              icon={<ArrowRight className="w-5 h-5" />}
-            >
-              {t.common.exploreMandir}
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="lg"
-              onClick={() => navigate('/gallery')}
-              className="text-surface-container-lowest border-surface/40 hover:bg-surface/20"
-            >
-              {t.common.viewGallery}
-            </Button>
-          </div>
-
-          {/* Information Glass Bar — anchored at bottom */}
-          <div className="mt-6 md:mt-8 bg-surface/15 backdrop-blur-md border border-surface/25 rounded-2xl p-3 md:p-5 max-w-3xl w-full shadow-2xl flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
-            <div className="flex items-center gap-3 text-surface-container-lowest">
-              <MapPin className="w-5 h-5 md:w-6 md:h-6 text-secondary-container shrink-0" />
-              <div className="flex flex-col text-left">
-                <span className="font-body text-[10px] md:text-[11px] uppercase tracking-wider text-surface-variant font-semibold">
-                  {t.common.location}
-                </span>
-                <span className="font-body text-xs md:text-sm font-semibold">
-                  {templeData.location}, {templeData.state}
-                </span>
-              </div>
-            </div>
-
-            <div className="hidden md:block w-px h-9 bg-surface/20" />
-
-            <div className="flex items-center gap-3 text-surface-container-lowest">
-              <Compass className="w-5 h-5 md:w-6 md:h-6 text-secondary-container shrink-0" />
-              <div className="flex flex-col text-left">
-                <span className="font-body text-[10px] md:text-[11px] uppercase tracking-wider text-surface-variant font-semibold">
-                  {t.common.sanctuary}
-                </span>
-                <span className="font-body text-xs md:text-sm font-semibold">{templeData.name}</span>
-              </div>
-            </div>
-
-            <div className="hidden md:block w-px h-9 bg-surface/20" />
-
-            <div className="flex items-center gap-3 text-surface-container-lowest">
-              <HeartHandshake className="w-5 h-5 md:w-6 md:h-6 text-secondary-container shrink-0" />
-              <div className="flex flex-col text-left">
-                <span className="font-body text-[10px] md:text-[11px] uppercase tracking-wider text-surface-variant font-semibold">
-                  {t.common.blessings}
-                </span>
-                <span className="font-hindi text-sm md:text-base">{t.jaiMataDiShort}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom breathing room */}
-        <div className="h-5 md:h-6 shrink-0 relative z-10" />
-      </section>
-
-      {/* SACRED DHYAN MANTRA */}
-      <MantraMarquee />
-
-      {/* LATEST TEMPLE UPDATE */}
+      {/* Latest Notice Pill */}
       <LatestTempleUpdate />
 
-      {/* 2. WELCOME SECTION */}
-      <SectionReveal className="py-24 px-margin-mobile lg:px-margin-desktop max-w-container-max mx-auto w-full flex flex-col items-center">
-        <SectionHeading
-          tag={t.home.welcomeTag}
-          title={t.home.welcomeHeading}
-          hindiTitle={t.jaiMataDi}
-          subtitle={t.home.welcomeText}
-        />
+      {/* ══════════════════════════════════════════════════════════════
+          ZONE 2: DAILY DIVINE EXPERIENCE BENTO (PERFECT 3-PILLAR GRID)
+         ══════════════════════════════════════════════════════════════ */}
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 max-w-[1240px] mx-auto w-full">
+        <motion.div
+          variants={welcomeContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {/* Section Intro with Smooth Entrance Animations */}
+          <div className="flex flex-col items-start mb-8 sm:mb-10">
+            <motion.div
+              variants={welcomeItemVariants}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-amber-500/25 text-amber-900 text-[11px] font-mono uppercase tracking-wider mb-2.5 bg-amber-50/70 backdrop-blur-xs shadow-2xs"
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="font-semibold">{isHindi ? 'दैनिक दर्शन एवं समय' : 'DAILY DARSHAN & TIMINGS'}</span>
+            </motion.div>
+            
+            <motion.h2 
+              variants={welcomeItemVariants}
+              className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight"
+            >
+              {t.home.welcomeHeading}
+            </motion.h2>
 
-        <div className="mt-4">
-          <Button
-            variant="secondary"
-            size="md"
-            onClick={() => navigate('/about')}
-            icon={<ArrowRight className="w-4 h-4" />}
-          >
-            {t.common.discoverMandir}
-          </Button>
-        </div>
-      </SectionReveal>
-
-      {/* 3. TEMPLE STORY SECTION */}
-      <SectionReveal className="py-20 bg-surface-container-lowest border-y border-outline-variant/30">
-        <div className="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6 flex flex-col items-start space-y-6">
-            <span className="font-body text-xs font-bold text-secondary uppercase tracking-[0.2em]">
-              OUR SACRED HERITAGE
-            </span>
-            <h3 className="font-display text-3xl md:text-4xl font-bold text-primary">
-              {t.home.sacredMandirHeading}
-            </h3>
-            <p className="font-body text-base md:text-lg text-on-surface-variant leading-relaxed">
-              {t.home.sacredMandirText}
-            </p>
-
-            <div className="pl-6 border-l-4 border-secondary py-2 my-2 bg-surface-container-low/50 rounded-r-xl w-full">
-              <p className="font-hindi text-2xl text-tertiary font-bold">
-                {t.home.shradhaQuote}
-              </p>
-              <span className="font-body text-xs text-on-surface-variant uppercase tracking-widest mt-1 block font-semibold">
-                {t.home.shradhaQuoteSub}
-              </span>
-            </div>
-
-            <div className="pt-2">
-              <Button
-                variant="ghost"
-                onClick={() => navigate('/about')}
-                icon={<ArrowRight className="w-4 h-4" />}
-              >
-                {t.common.readMore}
-              </Button>
-            </div>
-          </div>
-
-          <div className="lg:col-span-6 w-full h-80 md:h-[420px] rounded-2xl overflow-hidden shadow-2xl border-4 border-surface group">
-            <MotionImage
-              src={mandirUnderImg}
-              alt="Sheetla Mata Mandir"
-              loading="lazy"
-              decoding="async"
-              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            <motion.div
+              variants={welcomeItemVariants}
+              className="w-14 h-1 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-200 rounded-full mt-2.5 mb-1"
             />
+
+            <motion.p 
+              variants={welcomeItemVariants}
+              className="text-xs md:text-sm text-slate-600 max-w-xl mt-1 leading-relaxed"
+            >
+              {t.home.welcomeText}
+            </motion.p>
           </div>
-        </div>
-      </SectionReveal>
 
-      {/* 4. GALLERY SECTION */}
-      <GallerySection />
-
-      {/* 6. FESTIVAL PREVIEW SECTION */}
-      <SectionReveal className="py-24 bg-surface px-margin-mobile lg:px-margin-desktop">
-        <div className="max-w-container-max mx-auto">
-          <SectionHeading
-            tag="CELEBRATIONS"
-            title={t.home.eventsHeading}
-            subtitle={t.home.eventsSub}
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {eventsData.map((event) => (
-              <MotionCard
-                key={event.id}
-                className="bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/30 shadow-md flex flex-col"
+          {/* ── 3 ALTERNATING ZIG-ZAG SHOWCASES (LEFT-RIGHT FORMAT) ── */}
+          <div className="space-y-12 sm:space-y-16 md:space-y-20">
+            {/* ── ROW 1: TODAY'S AARTI & DARSHAN TIMINGS ── */}
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:gap-16">
+              {/* Visual Card (Left) */}
+              <motion.div
+                variants={welcomeItemVariants}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="w-full lg:w-1/2 flex items-center justify-center"
               >
-                <div className="h-48 overflow-hidden relative">
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover group-zoom-img"
-                  />
-                  <span className="absolute top-3 right-3 bg-secondary text-on-secondary px-3 py-1 rounded-full text-xs font-bold font-body uppercase shadow">
-                    {event.category}
-                  </span>
-                </div>
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-2 text-xs font-bold text-secondary mb-2">
-                      <Calendar className="w-4 h-4" />
-                      <span>{isHindi ? event.hindiDate : event.date}</span>
+                <div className="w-full max-w-[440px] bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-sm hover:border-amber-400/50 hover:shadow-md transition-all">
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-10 h-10 rounded-xl border border-amber-300/80 flex items-center justify-center text-amber-800 bg-amber-50 shadow-xs">
+                      <Sun className="w-5 h-5 stroke-[2]" />
                     </div>
-                    <h3 className="font-display text-xl font-bold text-primary">
-                      {isHindi ? event.hindiTitle : event.title}
-                    </h3>
-                    <p className="font-body text-sm text-on-surface-variant mt-2 leading-relaxed">
-                      {isHindi ? event.hindiDescription : event.description}
+                    <span className="inline-flex items-center gap-1.5 text-xs font-body font-bold bg-emerald-600 text-white px-3 py-1 rounded-full shadow-xs ring-2 ring-emerald-500/20">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                      <span>{isHindi ? 'नित्य दर्शन' : 'Open Daily'}</span>
+                    </span>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between text-xs sm:text-sm py-2 px-3 rounded-xl bg-[#fdfbf9] border border-slate-100">
+                      <span className="text-slate-600 font-medium">
+                        {isHindi ? 'प्रातः आरती (Morning Aarti)' : 'Morning Aarti'}
+                      </span>
+                      <span className="font-mono font-bold text-slate-900 text-sm sm:text-base">
+                        {templeData.morningAarti}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between text-xs sm:text-sm py-2 px-3 rounded-xl bg-[#fdfbf9] border border-slate-100">
+                      <span className="text-slate-600 font-medium">
+                        {isHindi ? 'संध्या आरती (Evening Aarti)' : 'Evening Aarti'}
+                      </span>
+                      <span className="font-mono font-bold text-slate-900 text-sm sm:text-base">
+                        {templeData.eveningAarti}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between text-xs sm:text-sm py-2 px-3 rounded-xl bg-[#fdfbf9] border border-slate-100">
+                      <span className="text-slate-600 font-medium">
+                        {isHindi ? 'दर्शन समय (Darshan Hours)' : 'Darshan Hours'}
+                      </span>
+                      <span className="font-mono font-bold text-amber-800 text-xs sm:text-sm">
+                        {isHindi ? 'प्रातः 4:00 - रात्रि 9:00' : '4:00 AM - 9:00 PM'}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Unboxed Editorial Text (Right) */}
+              <motion.div
+                variants={welcomeItemVariants}
+                className="w-full lg:w-1/2 flex flex-col items-start justify-center text-left"
+              >
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-wider font-semibold bg-amber-500/10 text-amber-900 border border-amber-500/25 mb-3">
+                  <Sparkles className="w-3 h-3 text-amber-600" />
+                  <span>{isHindi ? 'दैनिक आरती • DAILY AARTI' : 'DAILY AARTI & TIMINGS'}</span>
+                </div>
+
+                <h3 className="font-google text-xl sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
+                  {isHindi ? 'दैनिक आरती एवं पावन दर्शन समय' : 'Daily Aarti & Sacred Darshan Hours'}
+                </h3>
+
+                <p className="font-google text-sm sm:text-base text-slate-600 leading-[1.7] mb-5 font-normal">
+                  {isHindi
+                    ? 'माता रानी की नित्य प्रातः एवं संध्या आरती में सम्मिलित होकर अखंड पावन ज्योत के दर्शन करें और दिव्य आशीर्वाद प्राप्त करें।'
+                    : 'Participate in the auspicious daily morning and evening Aarti to experience the divine presence, inner peace and consecrated blessings.'}
+                </p>
+
+                <div className="space-y-2 mb-6 w-full">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? `प्रातः आरती: सुबह ${templeData.morningAarti} बजे` : `Morning Aarti: ${templeData.morningAarti}`}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? `संध्या आरती: शाम ${templeData.eveningAarti} बजे` : `Evening Aarti: ${templeData.eveningAarti}`}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? 'दर्शन समय: प्रातः 4:00 से रात्रि 9:00 बजे प्रतिदिन' : 'Darshan Hours: 4:00 AM to 9:00 PM daily'}</span>
+                  </div>
+                </div>
+
+                <Button
+                  variant="primary"
+                  size="md"
+                  onClick={() => navigate('/visit')}
+                  icon={<ArrowRight className="w-4 h-4 text-amber-300" />}
+                  className="w-full sm:w-auto"
+                >
+                  {isHindi ? 'विस्तृत समय सारिणी देखें' : 'View Full Darshan Schedule'}
+                </Button>
+              </motion.div>
+            </div>
+
+            {/* ── ROW 2: SACRED INNER SANCTUM & AKHAND JYOTI ── */}
+            <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-6 sm:gap-8 lg:gap-16">
+              {/* Visual Card (Right) */}
+              <motion.div
+                variants={welcomeItemVariants}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="w-full lg:w-1/2 flex items-center justify-center"
+              >
+                <div className="w-full max-w-[440px] bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:border-amber-400/50 hover:shadow-md transition-all group">
+                  <div className="relative h-52 sm:h-64 overflow-hidden">
+                    <img
+                      src={mandirUnderImg}
+                      alt="Sacred Inner Sanctum"
+                      className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                      <span className="text-[11px] font-mono tracking-widest uppercase bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+                        {isHindi ? 'पावन गर्भगृह' : 'INNER SANCTUM'}
+                      </span>
+                      <span className="text-xs font-mono text-amber-300 font-semibold">
+                        {isHindi ? 'प्राचीन सिद्ध पीठ' : 'Ancient Shrine'}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Unboxed Editorial Text (Left) */}
+              <motion.div
+                variants={welcomeItemVariants}
+                className="w-full lg:w-1/2 flex flex-col items-start justify-center text-left"
+              >
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-wider font-semibold bg-amber-500/10 text-amber-900 border border-amber-500/25 mb-3">
+                  <Sparkles className="w-3 h-3 text-amber-600" />
+                  <span>{isHindi ? 'पावन गर्भगृह • ANCIENT SHRINE' : 'AKHAND JYOTI & DEVOTION'}</span>
+                </div>
+
+                <h3 className="font-google text-xl sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
+                  {isHindi ? 'अखंड पावन ज्योति एवं जाग्रत स्वरूप' : 'Eternal Akhand Jyoti & Living Sanctum'}
+                </h3>
+
+                <p className="font-google text-sm sm:text-base text-slate-600 leading-[1.7] mb-5 font-normal">
+                  {isHindi
+                    ? 'सदियों से अनवरत प्रज्वलित अखंड ज्योति और वैदिक मंत्रोच्चार से गुंजायमान यह पावन गर्भगृह भक्तों को अपार शांति, आत्मिक ऊर्जा और अभय प्रदान करता है।'
+                    : 'Centuries of living prayer, consecrated Vedic rituals and eternal peace radiate from the sanctum sanctorum where the holy flame burns continuously.'}
+                </p>
+
+                <div className="space-y-2 mb-6 w-full">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? 'सदियों से अनवरत प्रज्वलित अखंड पावन ज्योति' : 'Centuries-old continuously burning Akhand Jyoti'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? 'पारंपरिक हिमाचली काष्ठ-शिल्प से अलंकृत गर्भगृह' : 'Sacred sanctum adorned with Himachali woodwork'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? 'सिद्ध कुलदेवी का जाग्रत व कल्याणकारी स्वरूप' : 'Living presence of Kuldevi Mata Sheetla'}</span>
+                  </div>
+                </div>
+
+                <Button
+                  variant="primary"
+                  size="md"
+                  onClick={() => navigate('/about')}
+                  icon={<ArrowRight className="w-4 h-4 text-amber-300" />}
+                  className="w-full sm:w-auto"
+                >
+                  {isHindi ? 'मंदिर इतिहास एवं महिमा पढ़ें' : 'Read Sacred Lore & History'}
+                </Button>
+              </motion.div>
+            </div>
+
+            {/* ── ROW 3: TEMPLE LOCATION & ACCESSIBILITY ── */}
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:gap-16">
+              {/* Visual Card (Left) */}
+              <motion.div
+                variants={welcomeItemVariants}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="w-full lg:w-1/2 flex items-center justify-center"
+              >
+                <div className="w-full max-w-[440px] bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-sm hover:border-amber-400/50 hover:shadow-md transition-all">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 rounded-xl border border-slate-900/80 flex items-center justify-center text-slate-900 bg-[#fdfbf9]">
+                      <Compass className="w-5 h-5 stroke-[1.75]" />
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs font-mono text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+                      <ShieldCheck className="w-4 h-4 text-amber-600" />
+                      <span>24×7 CCTV Secured</span>
+                    </div>
+                  </div>
+
+                  <div className="font-google font-bold text-base sm:text-lg text-slate-900 mb-1">
+                    {templeData.name}
+                  </div>
+                  <div className="text-xs text-slate-500 font-mono mb-4">
+                    {templeData.location}, {templeData.state} • {templeData.pincode}
+                  </div>
+
+                  <div className="p-3.5 rounded-2xl bg-[#fdfbf9] border border-slate-200/80 text-xs text-slate-700 space-y-1.5">
+                    <div className="flex items-center gap-2 font-bold text-slate-900">
+                      <MapPin className="w-3.5 h-3.5 text-amber-600" />
+                      <span>{isHindi ? 'सड़क मार्ग से सुगम पहुंच' : 'Direct Road Accessibility'}</span>
+                    </div>
+                    <p className="text-[11px] text-slate-500 pl-5">
+                      {isHindi ? 'टौणी देवी से मात्र 5 किमी की दूरी • पक्की सड़क' : 'Just 5 km from Tauni Devi • All-weather paved road'}
                     </p>
                   </div>
                 </div>
-              </MotionCard>
-            ))}
-          </div>
+              </motion.div>
 
-          <div className="mt-12 flex justify-center">
-            <Button
-              variant="secondary"
-              onClick={() => navigate('/festivals')}
-              icon={<ArrowRight className="w-4 h-4" />}
+              {/* Unboxed Editorial Text (Right) */}
+              <motion.div
+                variants={welcomeItemVariants}
+                className="w-full lg:w-1/2 flex flex-col items-start justify-center text-left"
+              >
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-wider font-semibold bg-amber-500/10 text-amber-900 border border-amber-500/25 mb-3">
+                  <MapPin className="w-3 h-3 text-amber-600" />
+                  <span>{isHindi ? 'सुगम मार्ग • LOCATION & REACH' : 'LOCATION & DIRECTIONS'}</span>
+                </div>
+
+                <h3 className="font-google text-xl sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
+                  {isHindi ? 'शीतला माता मंदिर लगदेवी (हमीरपुर)' : 'Temple Location & Sacred Reach'}
+                </h3>
+
+                <p className="font-google text-sm sm:text-base text-slate-600 leading-[1.7] mb-5 font-normal">
+                  {isHindi
+                    ? 'हमीरपुर जिले के तौणी देवी तहसील के अंतर्गत लगदेवी गाँव की सुरम्य प्राकृतिक वादियों में स्थित, जहाँ पक्की सड़क मार्ग द्वारा आसानी से पहुँचा जा सकता है।'
+                    : 'Nestled in the serene pine-covered valleys of Hamirpur near Tauni Devi, easily accessible by road from major transit points.'}
+                </p>
+
+                <div className="space-y-2 mb-6 w-full">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? 'टौणी देवी (बमसन) से मात्र 5 किमी की दूरी' : 'Just 5 km from Tauni Devi (Bamsan)'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? 'हमीरपुर मुख्य बस स्टैंड से नियमित आवागमन' : 'Regular connectivity from Hamirpur Bus Stand'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? '24×7 सुरक्षित परिसर एवं सुगम वाहन पार्किंग' : '24×7 secured premises & convenient vehicle parking'}</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+                  <Button
+                    variant="primary"
+                    size="md"
+                    onClick={() => window.open(templeData.mapDirectionsUrl, '_blank')}
+                    icon={<ExternalLink className="w-4 h-4 text-amber-300" />}
+                    className="w-full sm:w-auto"
+                  >
+                    {t.common.getDirections}
+                  </Button>
+
+                  <Button
+                    variant="ghost"
+                    size="md"
+                    onClick={() => navigate('/visit')}
+                    className="w-full sm:w-auto border-slate-300 hover:border-slate-900"
+                  >
+                    {t.nav.visit}
+                  </Button>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════
+          ZONE 3: HERITAGE & VILLAGE LAGDEVI SHOWCASE
+         ══════════════════════════════════════════════════════════════ */}
+      <section className="py-12 sm:py-16 md:py-20 bg-white border-y border-slate-200/80 px-4 sm:px-6 max-w-[1240px] mx-auto w-full">
+        <motion.div
+          variants={welcomeContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {/* Section Intro */}
+          <div className="flex flex-col items-start mb-8 sm:mb-12">
+            <motion.div
+              variants={welcomeItemVariants}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-amber-500/25 text-amber-900 text-[11px] font-mono uppercase tracking-wider mb-2.5 bg-amber-50/70 backdrop-blur-xs shadow-2xs"
             >
-              {t.common.viewAllEvents}
-            </Button>
-          </div>
-        </div>
-      </SectionReveal>
-
-      {/* 7. VILLAGE LAGDEVI SHOWCASE */}
-      <SectionReveal className="py-20 bg-surface-container-low border-y border-outline-variant/30">
-        <div className="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <span className="font-body text-xs font-bold text-secondary uppercase tracking-[0.2em]">
-              COMMUNITY & CULTURE
-            </span>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-primary mt-2">
-              {t.home.villageHeading}
-            </h2>
-            <span className="font-hindi text-xl text-tertiary font-semibold block mb-4">
-              {t.home.villageHindiHeading}
-            </span>
-            <p className="font-body text-base text-on-surface-variant leading-relaxed mb-6">
-              {t.home.villageText}
-            </p>
-            <Button
-              variant="primary"
-              onClick={() => navigate('/village')}
-              icon={<ArrowRight className="w-4 h-4" />}
+              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+              <span className="font-semibold">{isHindi ? 'गाँव की धरोहर एवं संस्कृति' : 'COMMUNITY & VILLAGE HERITAGE'}</span>
+            </motion.div>
+            
+            <motion.h2 
+              variants={welcomeItemVariants}
+              className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight"
             >
-              {t.common.discoverVillage}
-            </Button>
-          </div>
+              {isHindi ? 'पवित्र लगदेवी गाँव की प्राकृतिक छटा एवं आत्मीय सौहार्द' : 'Living Heritage of Scenic Village Lagdevi'}
+            </motion.h2>
 
-          <VillageDroneVideo 
-            className="h-80 md:h-96 rounded-2xl shadow-xl border-4 border-surface" 
-            poster={lagdeviViewImg} 
-          />
-        </div>
-      </SectionReveal>
-
-
-
-      {/* 8. DONATION CTA */}
-      <SectionReveal className="py-20 bg-surface px-margin-mobile lg:px-margin-desktop">
-        <div className="max-w-4xl mx-auto bg-surface-container-low border border-outline-variant/30 rounded-3xl p-8 md:p-12 text-center shadow-sm">
-          <SectionHeading
-            tag={t.donation.ctaHeroTitle}
-            title={t.donation.ctaHeroText}
-            subtitle=""
-          />
-          <div className="mt-6">
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={() => navigate('/donate')}
-              icon={<HeartHandshake className="w-5 h-5" />}
-            >
-              {t.donation.ctaHeroBtn}
-            </Button>
-          </div>
-        </div>
-      </SectionReveal>
-
-      {/* 9. VISIT PREVIEW & TIMINGS */}
-      <SectionReveal className="py-24 bg-surface px-margin-mobile lg:px-margin-desktop max-w-container-max mx-auto">
-        <div className="bg-surface-container-lowest rounded-3xl p-8 md:p-12 border border-outline-variant/30 shadow-lg grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <SectionHeading
-              tag="VISITOR INFORMATION"
-              title={t.home.visitHeading}
-              subtitle={t.home.visitText}
-              centered={false}
+            <motion.div
+              variants={welcomeItemVariants}
+              className="w-14 h-1 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-200 rounded-full mt-2.5 mb-1"
             />
 
-            <div className="space-y-4 font-body text-sm text-on-surface">
-              <div className="flex items-center gap-3">
-                <Clock className="w-5 h-5 text-secondary shrink-0" />
-                <span>{t.visitPage.darshanHours}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Clock className="w-5 h-5 text-secondary shrink-0" />
-                <span>{t.visitPage.morningAarti}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Clock className="w-5 h-5 text-secondary shrink-0" />
-                <span>{t.visitPage.eveningAarti}</span>
-              </div>
-            </div>
-
-            <div className="mt-8">
-              <a
-                href={templeData.mapDirectionsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="secondary" icon={<MapPin className="w-4 h-4" />}>
-                  {t.common.getDirections}
-                </Button>
-              </a>
-            </div>
+            <motion.p 
+              variants={welcomeItemVariants}
+              className="text-xs md:text-sm text-slate-600 max-w-xl mt-1 leading-relaxed"
+            >
+              {isHindi
+                ? 'चीड़ के सुरम्य वनों में बसी देवभूमि की समृद्ध संस्कृति, ऐतिहासिक परंपराएं एवं निस्वार्थ ग्रामीण आतिथ्य।'
+                : 'Immerse in the timeless Pahadi culture, pine-covered mountain trails, and ancient traditions nestled in the heart of Himachal.'}
+            </motion.p>
           </div>
 
-          <div className="bg-surface-container rounded-2xl p-6 border border-outline-variant/40 space-y-4">
-            <h3 className="font-display font-bold text-xl text-primary">
-              {t.home.announcementsHeading}
-            </h3>
-            <p className="font-body text-xs text-on-surface-variant">
-              {t.home.announcementsSub}
-            </p>
-
-            <div className="space-y-3 pt-2">
-              {announcementsData.map((item) => (
-                <div
-                  key={item.id}
-                  className="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/20"
-                >
-                  <div className="flex justify-between items-center text-xs text-secondary font-bold mb-1">
-                    <span>{isHindi ? item.hindiDate : item.date}</span>
-                    <span className="px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed rounded text-[10px] uppercase">
-                      {item.type}
+          {/* ── ROW 4: VILLAGE LAGDEVI HERITAGE (TEXT LEFT, VISUAL RIGHT) ── */}
+          <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-6 sm:gap-8 lg:gap-16">
+            {/* Visual Card (Right) */}
+            <motion.div
+              variants={welcomeItemVariants}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.2 }}
+              className="w-full lg:w-1/2 flex items-center justify-center"
+            >
+              <div className="w-full max-w-[440px] bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:border-amber-400/50 hover:shadow-md transition-all group">
+                <div className="relative h-52 sm:h-64 overflow-hidden">
+                  <img
+                    src={lagdeviViewImg}
+                    alt="Village Lagdevi Landscape"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                    <span className="text-[11px] font-mono tracking-widest uppercase bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+                      {isHindi ? '📍 सुरम्य लगदेवी घाटी' : '📍 Scenic Lagdevi Valley'}
+                    </span>
+                    <span className="text-xs font-mono text-amber-300 font-semibold">
+                      {isHindi ? 'हमीरपुर, हि.प्र.' : 'Hamirpur, HP'}
                     </span>
                   </div>
-                  <h4 className="font-display font-bold text-sm text-primary">
-                    {isHindi ? item.hindiTitle : item.title}
-                  </h4>
-                  <p className="font-body text-xs text-on-surface-variant mt-1">
-                    {isHindi ? item.hindiDescription : item.description}
-                  </p>
                 </div>
-              ))}
+                <div className="p-4 sm:p-5 bg-white border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
+                  <span className="font-google font-medium text-slate-700">
+                    {isHindi ? 'चीड़ के सुरम्य वन एवं शांति' : 'Pine Forests & Alpine Trails'}
+                  </span>
+                  <span className="font-mono text-amber-800 font-semibold">
+                    ~1,100m Altitude
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Unboxed Editorial Text (Left) */}
+            <motion.div
+              variants={welcomeItemVariants}
+              className="w-full lg:w-1/2 flex flex-col items-start justify-center text-left"
+            >
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-wider font-semibold bg-amber-500/10 text-amber-900 border border-amber-500/25 mb-3">
+                <Sparkles className="w-3 h-3 text-amber-600" />
+                <span>{isHindi ? 'सामुदायिक संस्कृति • COMMUNITY & CULTURE' : 'COMMUNITY & CULTURE • VILLAGE LAGDEVI'}</span>
+              </div>
+
+              <h3 className="font-google text-xl sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
+                {isHindi ? 'हमारा सुरम्य गाँव लगदेवी' : 'Our Village Lagdevi Heritage'}
+              </h3>
+
+              <p className="font-google text-sm sm:text-base text-slate-600 leading-[1.7] mb-5 font-normal">
+                {isHindi
+                  ? 'चीड़ के सुरम्य वनों और शांत हिमालयी वादियों में बसा लगदेवी गाँव—प्राचीन परंपराओं, आत्मीय सौहार्द और देवभूमि की समृद्ध पहाड़ी संस्कृति का पावन संगम है।'
+                  : 'Surrounded by pine forests and scenic Himalayan valleys, Village Lagdevi is a living tapestry of ancient traditions, pure mountain air, and warm Pahadi hospitality.'}
+              </p>
+
+              <div className="space-y-2 mb-6 w-full">
+                <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>{isHindi ? 'सुरम्य चीड़ के वनों व हिमालयी प्राकृतिक वादियों से आच्छादित' : 'Nestled amidst fragrant pine forests & scenic mountain valleys'}</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>{isHindi ? 'शताब्दियों पुरानी जीवित पहाड़ी लोक परंपराएं, आस्था व सौहार्द' : 'Centuries-old living Pahadi folklore, deep faith & harmony'}</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>{isHindi ? 'तौणी देवी से मात्र 5 किमी की दूरी पर आध्यात्मिक शांति का केंद्र' : 'Just 5 km from Tauni Devi • Peaceful spiritual atmosphere'}</span>
+                </div>
+              </div>
+
+              <Button
+                variant="primary"
+                size="md"
+                onClick={() => navigate('/village')}
+                icon={<ArrowRight className="w-4 h-4 text-amber-300" />}
+                className="w-full sm:w-auto"
+              >
+                {t.common.discoverVillage}
+              </Button>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════
+          CURATED GALLERY PREVIEW
+         ══════════════════════════════════════════════════════════════ */}
+      <GallerySection />
+
+      {/* ══════════════════════════════════════════════════════════════
+          ZONE 4: DEVOTEE SEVA (DONATION) & REAL-TIME NOTICE SHOWCASES
+         ══════════════════════════════════════════════════════════════ */}
+      <section className="py-12 sm:py-16 md:py-20 bg-[#fdfbf9] px-4 sm:px-6 max-w-[1240px] mx-auto w-full">
+        <motion.div
+          variants={welcomeContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {/* Section Intro */}
+          <div className="flex flex-col items-start mb-8 sm:mb-12">
+            <motion.div
+              variants={welcomeItemVariants}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-amber-500/25 text-amber-900 text-[11px] font-mono uppercase tracking-wider mb-2.5 bg-amber-50/70 backdrop-blur-xs shadow-2xs"
+            >
+              <HeartHandshake className="w-3.5 h-3.5 text-amber-600" />
+              <span className="font-semibold">{isHindi ? 'पावन सेवा एवं मंदिर सूचनाएं' : 'DEVOTEE SEVA & LIVE UPDATES'}</span>
+            </motion.div>
+            
+            <motion.h2 
+              variants={welcomeItemVariants}
+              className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight"
+            >
+              {isHindi ? 'श्रद्धालु सेवा सहयोग एवं ताज़ा मंदिर घोषणाएं' : 'Devotee Seva & Official Mandir Updates'}
+            </motion.h2>
+
+            <motion.div
+              variants={welcomeItemVariants}
+              className="w-14 h-1 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-200 rounded-full mt-2.5 mb-1"
+            />
+
+            <motion.p 
+              variants={welcomeItemVariants}
+              className="text-xs md:text-sm text-slate-600 max-w-xl mt-1 leading-relaxed"
+            >
+              {isHindi
+                ? 'मंदिर के विकास व नित्य लंगर सेवा में अपनी श्रद्धा अनुसार योगदान दें और मंदिर प्रबंधकारिणी समिति की आधिकारिक घोषणाओं से जुड़े रहें।'
+                : 'Contribute to daily Langar prasad and temple preservation while staying informed with real-time official temple announcements.'}
+            </motion.p>
+          </div>
+
+          {/* ── 2 ALTERNATING SHOWCASE ROWS (DONATION & NOTICES) ── */}
+          <div className="space-y-12 sm:space-y-16 md:space-y-20">
+            {/* ── ROW 8: OFFICIAL TEMPLE DONATION & SEVA (TEXT LEFT, VISUAL RIGHT) ── */}
+            <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-6 sm:gap-8 lg:gap-16">
+              {/* Visual Card (Right) */}
+              <motion.div
+                variants={welcomeItemVariants}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="w-full lg:w-1/2 flex items-center justify-center"
+              >
+                <div className="w-full max-w-[440px] bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-sm hover:border-amber-400/50 hover:shadow-md transition-all">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 rounded-xl border border-amber-300/80 flex items-center justify-center text-amber-800 bg-amber-50 shadow-xs">
+                      <HeartHandshake className="w-5 h-5 stroke-[1.75]" />
+                    </div>
+                    <span className="text-[11px] font-mono text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 font-semibold inline-flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+                      Official Trust Account
+                    </span>
+                  </div>
+
+                  <div className="font-google font-bold text-base sm:text-lg text-slate-900 mb-0.5">
+                    MANAGING COMMITTEE SITTA TAMPLE
+                  </div>
+                  <div className="text-xs text-slate-500 font-mono mb-4">
+                    UCO Bank • Tauni Devi Branch (Hamirpur)
+                  </div>
+
+                  <div className="p-3.5 rounded-2xl bg-[#fdfbf9] border border-slate-200/80 mb-3 space-y-1">
+                    <div className="text-[11px] font-mono uppercase text-slate-500 font-semibold">
+                      Official Temple UPI ID
+                    </div>
+                    <div className="font-mono font-bold text-xs sm:text-base text-slate-900 break-all select-all">
+                      sittatample8577@ucobank
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between text-xs text-slate-600 px-1">
+                    <span className="inline-flex items-center gap-1.5 text-emerald-700 font-medium font-google">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      100% Direct Bank Transfer
+                    </span>
+                    <span className="font-mono text-slate-400 text-[11px]">No Intermediary</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Unboxed Editorial Text (Left) */}
+              <motion.div
+                variants={welcomeItemVariants}
+                className="w-full lg:w-1/2 flex flex-col items-start justify-center text-left"
+              >
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-wider font-semibold bg-amber-500/10 text-amber-900 border border-amber-500/25 mb-3">
+                  <HeartHandshake className="w-3 h-3 text-amber-600" />
+                  <span>{isHindi ? 'पावन सेवा • SACRED CONTRIBUTIONS' : 'DEVOTEE SEVA • TEMPLE DEVELOPMENT'}</span>
+                </div>
+
+                <h3 className="font-google text-xl sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
+                  {isHindi ? 'मंदिर विकास एवं नित्य लंगर सेवा सहयोग' : 'Temple Development & Langar Seva'}
+                </h3>
+
+                <p className="font-google text-sm sm:text-base text-slate-600 leading-[1.7] mb-5 font-normal">
+                  {isHindi
+                    ? 'समस्त दान राशि सीधे मंदिर प्रबंधकारिणी समिति के आधिकारिक UCO बैंक खाते में जमा होती है। नित्य लंगर, गौ-सेवा व मंदिर जीर्णोद्धार में अपनी इच्छानुसार सहयोग करें।'
+                    : 'All contributions directly credit the official Temple Managing Committee UCO Bank account. Support daily Langar, Gau Seva, and temple preservation as per your devotion.'}
+                </p>
+
+                <div className="space-y-2 mb-6 w-full">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? '100% सीधे मंदिर प्रबंधकारिणी समिति के बैंक खाते में' : '100% direct credit to Temple Managing Committee bank account'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? 'नित्य निःशुल्क महाप्रसाद लंगर एवं गौ-सेवा में पूर्ण सदुपयोग' : 'Dedicated to daily Langar Mahaprasad & Gau Seva'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? 'पारदर्शी प्रबंधन एवं तुरंत डिजिटल पावती/रसीद उपलब्ध' : 'Transparent governance with instant digital receipt acknowledgement'}</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+                  <Button
+                    variant="primary"
+                    size="md"
+                    onClick={() => navigate('/donate')}
+                    icon={<HeartHandshake className="w-4 h-4 text-amber-300" />}
+                    className="w-full sm:w-auto"
+                  >
+                    {t.donation.ctaHeroBtn}
+                  </Button>
+
+                  <Button
+                    variant="ghost"
+                    size="md"
+                    onClick={() => navigate('/contact')}
+                    className="w-full sm:w-auto border-slate-300 hover:border-slate-900"
+                  >
+                    {t.nav.contact}
+                  </Button>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* ── ROW 9: REAL-TIME TEMPLE NOTICES & ANNOUNCEMENTS (VISUAL LEFT, TEXT RIGHT) ── */}
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:gap-16">
+              {/* Visual Card (Left) */}
+              <motion.div
+                variants={welcomeItemVariants}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="w-full lg:w-1/2 flex items-center justify-center"
+              >
+                <div className="w-full max-w-[440px] bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-sm hover:border-amber-400/50 hover:shadow-md transition-all">
+                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-xl border border-slate-300 flex items-center justify-center text-slate-700 bg-[#fdfbf9]">
+                        <Bell className="w-4 h-4 text-amber-600" />
+                      </div>
+                      <h4 className="font-google font-bold text-sm sm:text-base text-slate-900">
+                        {isHindi ? 'ताज़ा मंदिर सूचनाएं' : 'Live Mandir Notices'}
+                      </h4>
+                    </div>
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  </div>
+
+                  <div className="space-y-3">
+                    {announcementsData.slice(1, 3).map((item) => (
+                      <div
+                        key={item.id}
+                        className="bg-[#fdfbf9] p-3 rounded-2xl border border-slate-100 hover:border-amber-400/40 transition-colors"
+                      >
+                        <div className="flex justify-between items-center text-[10.5px] text-amber-800 font-semibold mb-1">
+                          <span className="font-mono">{isHindi ? item.hindiDate : item.date}</span>
+                          <span className="px-2 py-0.5 bg-amber-50 text-amber-900 rounded-full text-[9px] uppercase font-mono border border-amber-200/60">
+                            {item.type}
+                          </span>
+                        </div>
+                        <h5 className="font-google font-bold text-xs sm:text-sm text-slate-900">
+                          {isHindi ? item.hindiTitle : item.title}
+                        </h5>
+                        <p className="text-[11.5px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                          {isHindi ? item.hindiDescription : item.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Unboxed Editorial Text (Right) */}
+              <motion.div
+                variants={welcomeItemVariants}
+                className="w-full lg:w-1/2 flex flex-col items-start justify-center text-left"
+              >
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-wider font-semibold bg-amber-500/10 text-amber-900 border border-amber-500/25 mb-3">
+                  <Bell className="w-3 h-3 text-amber-600" />
+                  <span>{isHindi ? 'आधिकारिक सूचनाएं • OFFICIAL NOTICES' : 'OFFICIAL NOTICES • MANDIR UPDATES'}</span>
+                </div>
+
+                <h3 className="font-google text-xl sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
+                  {isHindi ? 'आधिकारिक मंदिर सूचनाएं एवं समय परिवर्तन' : 'Official Notices & Mandir Updates'}
+                </h3>
+
+                <p className="font-google text-sm sm:text-base text-slate-600 leading-[1.7] mb-5 font-normal">
+                  {isHindi
+                    ? 'मंदिर प्रबंधकारिणी समिति द्वारा जारी आगामी धार्मिक अनुष्ठानों, विशेष पूजा तिथियों, विशाल भंडारा आयोजनों और आरती समय के संबंध में प्रामाणिक सूचनाएं प्राप्त करें।'
+                    : 'Stay informed with authentic real-time updates regarding upcoming Vedic rituals, auspicious festive dates, community feasts, and seasonal Aarti timings.'}
+                </p>
+
+                <div className="space-y-2 mb-6 w-full">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? 'आगामी विशेष पूजा, अनुष्ठान व शत चंडी महायज्ञ कार्यक्रम' : 'Upcoming Vedic Pujas, Chandi Path & Yajna schedules'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? 'ग्रीष्म/शीतकालीन आरती समय परिवर्तन की त्वरित सूचना' : 'Real-time notifications for seasonal Aarti timing adjustments'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-google font-medium text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{isHindi ? 'समस्त ग्रामवासियों एवं श्रद्धालुओं के लिए प्रामाणिक घोषणाएं' : 'Official announcements directly from Mandir Committee'}</span>
+                  </div>
+                </div>
+
+                <Button
+                  variant="primary"
+                  size="md"
+                  onClick={() => navigate('/festivals')}
+                  icon={<ArrowRight className="w-4 h-4 text-amber-300" />}
+                  className="w-full sm:w-auto"
+                >
+                  {isHindi ? 'सभी पावन सूचनाएं देखें' : 'View All Notices & Updates'}
+                </Button>
+              </motion.div>
             </div>
           </div>
-        </div>
-      </SectionReveal>
+        </motion.div>
+      </section>
+
     </div>
   );
 };

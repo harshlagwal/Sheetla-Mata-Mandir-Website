@@ -11,7 +11,8 @@ export const DONATION_CONFIG = {
   // Phase 3 & 4 Config
   testMode: false,
   proofSubmissionEnabled: true,
-  committeeWhatsApp: '+91 62306 24011',
+  committeeEmail: 'lagwalharsh1@gmail.com',
+  committeeWhatsApp: '',
 
   // UI Config
   // Set to true only when authorized details are provided (or during test mode)

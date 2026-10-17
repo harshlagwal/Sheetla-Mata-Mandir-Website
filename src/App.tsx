@@ -7,6 +7,7 @@ import { TempleLoader } from './components/common/TempleLoader';
 import { PageTransition } from './components/motion/PageTransition';
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { BottomNavBar } from './components/ui/bottom-nav-bar';
 
 import { lazy, Suspense } from 'react';
 import { DelayedLoader } from './components/common/DelayedLoader';
@@ -20,6 +21,8 @@ const Village = lazy(() => import('./pages/Village').then(m => ({ default: m.Vil
 const Visit = lazy(() => import('./pages/Visit').then(m => ({ default: m.Visit })));
 const Contact = lazy(() => import('./pages/Contact').then(m => ({ default: m.Contact })));
 const Donate = lazy(() => import('./pages/Donate').then(m => ({ default: m.Donate })));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
+const TermsOfService = lazy(() => import('./pages/TermsOfService').then(m => ({ default: m.TermsOfService })));
 const NotFound = lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
 
 function AnimatedRoutes() {
@@ -38,6 +41,8 @@ function AnimatedRoutes() {
           <Route path="/visit" element={<PageTransition><Visit /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
           <Route path="/donate" element={<PageTransition><Donate /></PageTransition>} />
+          <Route path="/privacy-policy" element={<PageTransition><PrivacyPolicy /></PageTransition>} />
+          <Route path="/terms-of-service" element={<PageTransition><TermsOfService /></PageTransition>} />
           <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
         </Routes>
       </Suspense>
@@ -57,9 +62,10 @@ export function App() {
         <ScrollToTop />
         <div className="min-h-screen flex flex-col justify-between bg-surface font-body text-on-surface">
           <Navbar />
-          <main className="flex-grow flex flex-col">
+          <main className="flex-grow flex flex-col pb-6 xl:pb-0">
             <AnimatedRoutes />
           </main>
+          <BottomNavBar stickyBottom className="flex xl:hidden" />
           <Footer />
         </div>
       </Router>

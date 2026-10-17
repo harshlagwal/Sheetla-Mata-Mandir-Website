@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { SectionHeading } from '../components/common/SectionHeading';
-import { Compass, Shield, Users, Landmark, Clock } from 'lucide-react';
+import { Compass, Shield, Users, Landmark, Clock, Sparkles } from 'lucide-react';
 import { TempleHistoryStone } from '../components/about/TempleHistoryStone';
 import { SectionReveal } from '../components/motion/SectionReveal';
 import { MotionCard } from '../components/motion/MotionCard';
@@ -45,76 +44,139 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <div className="w-full pt-28 pb-20">
-      {/* Hero */}
-      <SectionReveal className="bg-surface-container py-16 px-margin-mobile lg:px-margin-desktop mb-16 border-b border-outline-variant/30">
-        <div className="max-w-container-max mx-auto text-center max-w-3xl">
-          <span className="font-body text-xs font-bold text-secondary uppercase tracking-[0.2em]">
-            TEMPLE HERITAGE
-          </span>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-primary mt-2">
-            {t.about.heroTitle}
-          </h1>
-          <p className="font-body text-base md:text-lg text-on-surface-variant mt-4 leading-relaxed">
-            {t.about.heroSubtitle}
-          </p>
+    <div className="w-full pt-28 pb-20 bg-[#fdfbf9] text-slate-900 overflow-x-hidden">
+      {/* ── HERO BANNER ── */}
+      <SectionReveal className="py-12 md:py-16 px-6 max-w-[1240px] mx-auto text-center border-b border-slate-200/80 mb-12">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded border border-slate-300 text-slate-700 text-[10.5px] font-mono uppercase tracking-wider mb-3 bg-white">
+          <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+          <span>TEMPLE HERITAGE & ORIGINS</span>
         </div>
+        <h1 className="font-display text-3xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight">
+          {t.about.heroTitle}
+        </h1>
+        <p className="font-body text-xs sm:text-sm md:text-base text-slate-600 max-w-2xl mx-auto mt-3 leading-relaxed">
+          {t.about.heroSubtitle}
+        </p>
       </SectionReveal>
 
-      {/* Main Content Grid */}
-      <section className="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop space-y-20">
-        {/* Section 1: History */}
-        <TempleHistoryStone />
-        {/* Section 2: Four Pillars */}
-        <SectionReveal className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <MotionCard className="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 shadow-sm space-y-3">
-            <Landmark className="w-8 h-8 text-primary" />
-            <h3 className="font-display font-bold text-lg text-primary">{t.about.archTitle}</h3>
-            <p className="font-body text-sm text-on-surface-variant leading-relaxed">{t.about.archDesc}</p>
-          </MotionCard>
-          <MotionCard className="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 shadow-sm space-y-3">
-            <Compass className="w-8 h-8 text-primary" />
-            <h3 className="font-display font-bold text-lg text-primary">{t.about.traditionTitle}</h3>
-            <p className="font-body text-sm text-on-surface-variant leading-relaxed">{t.about.traditionDesc}</p>
-          </MotionCard>
-          <MotionCard className="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 shadow-sm space-y-3">
-            <Users className="w-8 h-8 text-primary" />
-            <h3 className="font-display font-bold text-lg text-primary">{t.about.communityTitle}</h3>
-            <p className="font-body text-sm text-on-surface-variant leading-relaxed">{t.about.communityDesc}</p>
-          </MotionCard>
-          <MotionCard className="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 shadow-sm space-y-3">
-            <Shield className="w-8 h-8 text-primary" />
-            <h3 className="font-display font-bold text-lg text-primary">Spiritual Sanctuary</h3>
-            <p className="font-body text-sm text-on-surface-variant leading-relaxed">Offering peace, strength, and refuge for devotees seeking Mata Rani's grace.</p>
-          </MotionCard>
+      {/* ── MAIN CONTENT GRID ── */}
+      <section className="max-w-[1240px] mx-auto px-6 space-y-20">
+        
+        {/* Section 1: The Authentic Ancient Shilalekh Stone Inscription (Exact Screenshot Look) */}
+        <div className="w-full bg-[#0b0c0b] text-[#f1ece1] rounded-3xl py-12 px-4 sm:px-8 border border-[#282b28] relative overflow-hidden shadow-2xl">
+          <div
+            className="absolute inset-0 pointer-events-none z-0"
+            style={{
+              background: 'radial-gradient(circle at 50% 15%, rgba(223, 190, 125, 0.08) 0%, rgba(23, 24, 23, 0) 70%)',
+            }}
+          />
+          <div className="relative z-10">
+            <TempleHistoryStone />
+          </div>
+        </div>
+
+        {/* Section 2: Four Pillars (Antigravity Sharp Boxed Icon Style) */}
+        <SectionReveal>
+          <div className="mb-8 text-left">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-amber-800 font-bold block mb-1">
+              SACRED FOUNDATION
+            </span>
+            <h3 className="font-display text-xl md:text-2xl font-bold text-slate-900 tracking-tight">
+              {isHindi ? 'मंदिर की चतुर्विध आधारशिला' : 'The Four Pillars of the Sacred Shrine'}
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {/* Pillar 1 */}
+            <MotionCard className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-amber-400/50 hover:shadow-xs transition-all flex flex-col items-start group">
+              <div className="w-8 h-8 rounded-md border border-slate-900/80 flex items-center justify-center text-slate-900 mb-3.5 bg-[#fdfbf9] group-hover:border-amber-600 group-hover:text-amber-700 transition-colors">
+                <Landmark className="w-4 h-4" />
+              </div>
+              <h4 className="font-display font-bold text-sm md:text-base text-slate-900 mb-1.5">
+                {t.about.archTitle}
+              </h4>
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                {t.about.archDesc}
+              </p>
+            </MotionCard>
+
+            {/* Pillar 2 */}
+            <MotionCard className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-amber-400/50 hover:shadow-xs transition-all flex flex-col items-start group">
+              <div className="w-8 h-8 rounded-md border border-slate-900/80 flex items-center justify-center text-slate-900 mb-3.5 bg-[#fdfbf9] group-hover:border-amber-600 group-hover:text-amber-700 transition-colors">
+                <Compass className="w-4 h-4" />
+              </div>
+              <h4 className="font-display font-bold text-sm md:text-base text-slate-900 mb-1.5">
+                {t.about.traditionTitle}
+              </h4>
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                {t.about.traditionDesc}
+              </p>
+            </MotionCard>
+
+            {/* Pillar 3 */}
+            <MotionCard className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-amber-400/50 hover:shadow-xs transition-all flex flex-col items-start group">
+              <div className="w-8 h-8 rounded-md border border-slate-900/80 flex items-center justify-center text-slate-900 mb-3.5 bg-[#fdfbf9] group-hover:border-amber-600 group-hover:text-amber-700 transition-colors">
+                <Users className="w-4 h-4" />
+              </div>
+              <h4 className="font-display font-bold text-sm md:text-base text-slate-900 mb-1.5">
+                {t.about.communityTitle}
+              </h4>
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                {t.about.communityDesc}
+              </p>
+            </MotionCard>
+
+            {/* Pillar 4 */}
+            <MotionCard className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-amber-400/50 hover:shadow-xs transition-all flex flex-col items-start group">
+              <div className="w-8 h-8 rounded-md border border-slate-900/80 flex items-center justify-center text-slate-900 mb-3.5 bg-[#fdfbf9] group-hover:border-amber-600 group-hover:text-amber-700 transition-colors">
+                <Shield className="w-4 h-4" />
+              </div>
+              <h4 className="font-display font-bold text-sm md:text-base text-slate-900 mb-1.5">
+                {isHindi ? 'आध्यात्मिक शरण' : 'Spiritual Sanctuary'}
+              </h4>
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                {isHindi
+                  ? 'रोग-शोक निवारण और माता रानी की असीम कृपा प्राप्त करने का पावन केंद्र।'
+                  : 'Offering peace, strength, and solace for devotees seeking divine grace.'}
+              </p>
+            </MotionCard>
+          </div>
         </SectionReveal>
 
-        {/* Section 3: Timeline */}
-        <SectionReveal className="bg-surface-container-lowest p-8 md:p-12 rounded-3xl border border-outline-variant/30 shadow-sm">
-          <SectionHeading
-            tag="HERITAGE TIMELINE"
-            title="Preserving Traditions Through Time"
-            subtitle="Key milestones in the spiritual journey of Sheetla Mata Mandir Lagdevi."
-          />
+        {/* Section 3: Heritage Timeline */}
+        <SectionReveal className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200/80 shadow-xs">
+          <div className="mb-8 text-center max-w-xl mx-auto">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-amber-800 font-bold block mb-1">
+              CHRONICLE OF FAITH
+            </span>
+            <h3 className="font-display text-xl md:text-3xl font-bold text-slate-900 tracking-tight">
+              {isHindi ? 'परंपराओं का कालक्रमानुसार इतिहास' : 'Preserving Traditions Through Time'}
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+              {isHindi
+                ? 'श्री शीतला माता मंदिर लगदेवी के पावन इतिहास के प्रमुख सोपान'
+                : 'Key milestones in the spiritual journey of Sheetla Mata Mandir Lagdevi.'}
+            </p>
+          </div>
 
-          <div className="space-y-8 relative before:absolute before:inset-0 before:left-4 md:before:left-1/2 before:w-0.5 before:bg-outline-variant/40">
+          <div className="space-y-6 relative before:absolute before:inset-0 before:left-3 md:before:left-1/2 before:w-px before:bg-slate-200">
             {timelineItems.map((item, idx) => (
               <MotionCard
                 key={idx}
                 className={`relative flex flex-col md:flex-row items-start ${
                   idx % 2 === 0 ? 'md:flex-row-reverse' : ''
-                } gap-8`}
+                } gap-6`}
               >
-                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-secondary border-4 border-surface shadow" />
-                <div className="ml-10 md:ml-0 md:w-1/2 p-6 bg-surface-container-low rounded-2xl border border-outline-variant/20 shadow-sm">
-                  <div className="flex items-center gap-2 text-xs font-bold text-secondary mb-1">
-                    <Clock className="w-4 h-4" />
+                <div className="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-3 h-3 rounded-full bg-amber-600 border-2 border-white shadow-xs" />
+                <div className="ml-8 md:ml-0 md:w-1/2 p-4 sm:p-5 bg-[#fdfbf9] rounded-xl border border-slate-200/80 shadow-2xs">
+                  <div className="flex items-center gap-1.5 text-[11px] font-mono text-amber-800 font-bold mb-1">
+                    <Clock className="w-3 h-3" />
                     <span>{isHindi ? item.hindiYear : item.year}</span>
                   </div>
-                  <h4 className="font-display font-bold text-lg text-primary">
+                  <h4 className="font-display font-bold text-sm md:text-base text-slate-900">
                     {isHindi ? item.hindiTitle : item.title}
                   </h4>
-                  <p className="font-body text-sm text-on-surface-variant mt-2">
+                  <p className="text-xs text-slate-600 mt-1.5 leading-relaxed font-normal">
                     {isHindi ? item.hindiDesc : item.desc}
                   </p>
                 </div>
@@ -122,6 +184,7 @@ export const About: React.FC = () => {
             ))}
           </div>
         </SectionReveal>
+
       </section>
     </div>
   );

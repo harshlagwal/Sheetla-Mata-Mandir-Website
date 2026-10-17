@@ -32,3 +32,6 @@ coverage
 
 # Cache and logs
 cache
+.qodo
+*.timestamp-*.mjs
+*.tmp

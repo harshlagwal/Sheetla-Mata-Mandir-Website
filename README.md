@@ -1,165 +1,186 @@
 <div align="center">
-  <h1 align="center">Sheetla Mata Mandir Website</h1>
   <p align="center">
-    <strong>A premium, modern digital experience for Sheetla Mata Mandir, Lagdevi, Himachal Pradesh.</strong>
+    <strong>॥ ॐ श्री शीतलायै नमः ॥</strong>
+  </p>
+  <h1 align="center">श्री शीतला माता पावन धाम • लगदेवी</h1>
+  <p align="center">
+    <strong>Official Web Portal & Digital Sanctuary for Shree Sheetla Mata Mandir</strong><br />
+    <em>Village Lagdevi, Tehsil Bamsan (Tauni Devi), District Hamirpur, Himachal Pradesh • 177022</em>
   </p>
   <p align="center">
-    <img src="https://img.shields.io/badge/React-18-blue.svg?style=for-the-badge&logo=react" alt="React" />
-    <img src="https://img.shields.io/badge/TypeScript-5-blue.svg?style=for-the-badge&logo=typescript" alt="TypeScript" />
-    <img src="https://img.shields.io/badge/Vite-5-646CFF.svg?style=for-the-badge&logo=vite" alt="Vite" />
-    <img src="https://img.shields.io/badge/Tailwind-3-06B6D4.svg?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
-    <img src="https://img.shields.io/badge/Open_Source-Yes-success.svg?style=for-the-badge" alt="Open Source" />
-    <img src="https://img.shields.io/github/license/harshlagwal/Sheetla-Mata-Mandir-Website?style=for-the-badge" alt="License" />
-    <img src="https://img.shields.io/github/stars/harshlagwal/Sheetla-Mata-Mandir-Website?style=for-the-badge" alt="GitHub Stars" />
-    <img src="https://img.shields.io/github/last-commit/harshlagwal/Sheetla-Mata-Mandir-Website?style=for-the-badge" alt="Last Commit" />
+    <a href="https://github.com/harshlagwal/Sheetla-Mata-Mandir-Website"><img src="https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18" /></a>
+    <a href="https://github.com/harshlagwal/Sheetla-Mata-Mandir-Website"><img src="https://img.shields.io/badge/TypeScript-5.5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript 5" /></a>
+    <a href="https://github.com/harshlagwal/Sheetla-Mata-Mandir-Website"><img src="https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" /></a>
+    <a href="https://github.com/harshlagwal/Sheetla-Mata-Mandir-Website"><img src="https://img.shields.io/badge/TailwindCSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" /></a>
+    <a href="https://github.com/harshlagwal/Sheetla-Mata-Mandir-Website"><img src="https://img.shields.io/badge/Framer_Motion-11-FF0055?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" /></a>
+    <a href="https://github.com/harshlagwal/Sheetla-Mata-Mandir-Website/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-amber.svg?style=for-the-badge" alt="MIT License" /></a>
   </p>
 </div>
 
 <br />
 
-## 🌟 Project Overview
+---
 
-This repository hosts the official digital platform for **Sheetla Mata Mandir**, located in the serene Himalayan village of Lagdevi, District Hamirpur, Himachal Pradesh. The project is designed as an enterprise-grade, luxury-class web application that seamlessly blends tradition with modern web aesthetics. It provides devotees and visitors with comprehensive information, a premium visual experience, and a highly secure donation workflow.
+## 🌟 Overview
 
-## ✨ Features
+The **Sheetla Mata Mandir Official Web Portal** is an ultra-modern, high-performance digital sanctuary crafted for **Shree Sheetla Mata Mandir**, located in the pine-covered Himalayan foothills of Village Lagdevi (Hamirpur, HP).
 
-- **Responsive Design:** Pixel-perfect across all screen sizes (from 320px to 1920px+).
-- **Bilingual Support (English/Hindi):** Seamless, context-aware language switching without layout shifts.
-- **Temple History & Visitor Guide:** Detailed information on the sanctuary's heritage and visiting protocols.
-- **Village Section & Drone Cinematic Experience:** High-performance, lazy-loaded background videos utilizing `IntersectionObserver` to save bandwidth.
-- **Festival Information & Gallery:** Rich, immersive photo and event galleries.
-- **Temple Timings & Nearby Facilities:** Essential planning resources for devotees.
-- **Donation System:** A state-of-the-art, secure React flow for processing contributions.
-- **Professional Donation Receipt:** Automated PDF and UI receipts generated on the client side.
-- **WhatsApp Verification Flow & UPI Ready Architecture:** Direct integration with deep-links and UPI URIs for native mobile payments.
-- **Contact Form:** Protected via EmailJS for secure inquiries.
-- **Accessibility:** Full support for `prefers-reduced-motion` and semantic `aria-labels`.
-- **Performance Optimizations:** Aggressive code splitting, optimized asset loading, and skeleton states.
-- **Security Enhancements:** Strict client-side validations and no stored personal data or sensitive API keys.
+Designed with a blend of **sacred Himachal traditions** and modern **Google Antigravity / Apple Liquid Glass aesthetics**, the application provides devotees across India and the global diaspora with instant access to:
+- Daily Aarti timings and sacred Darshan hours
+- High-definition Darshan Gallery featuring the 5 consecrated deities
+- Cultural heritage, folklore, and travel guide for Village Lagdevi
+- Live temple announcements and upcoming festival dates (Navratri, Bhavya Jagran, Historic Mela)
+- 100% transparent Seva & Daan direct bank transfers to the official Temple Managing Committee
+- Devotee legal and privacy protections via dedicated Privacy Policy and Terms of Service
 
-## 🛠️ Tech Stack
+---
 
-- **Framework:** React 18
-- **Language:** TypeScript
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS
-- **Animations:** Framer Motion
-- **Routing:** React Router DOM
-- **Mailing/Forms:** EmailJS
-- **Core Web:** HTML5, CSS3, Modern JavaScript
+## ✨ Key Architectural Highlights
 
-## 📂 Folder Structure
+### 🕊️ 1. Sacred Cinematic Experience
+- **Hardware-Accelerated 60FPS Parallax:** The hero showcase features a native high-definition portrait of Kuldevi Mata Sheetla with smooth scroll parallax and live operational badges.
+- **Divine Ambience:** Authentic lotus emblems, warm golden ambient backdrops, and flame-flicker animations.
+
+### 📱 2. Mobile-First & Responsive UX
+- **Frosted Glass Floating Navigation (`BottomNavBar`):** Responsive bottom navigation bar with spring physics, bilingual active labels, and backdrop blur.
+- **Collision-Free Controls:** Floating `ScrollToTop` button safely floats above the navigation bar on small devices without covering icons or footer content.
+- **Generous Footer Clearance:** Ample bottom spacing ensuring legal links (*Privacy Policy* and *Terms of Service*) and developer credits remain fully visible and touch-accessible.
+- **Interactive Card Stacks (`card-25`):** Cards default to an elegant fanned preview on touch devices, with fluid mouse hover expansions on desktop viewports.
+
+### 🌐 3. Full Bilingual Localization
+- Instant, zero-layout-shift language switching between **Hindi (हिंदी)** and **English**.
+- Fully localized typography leveraging Google Sans (`font-google`), Plus Jakarta Sans, and authentic Devanagari font families.
+
+### 🛕 4. Consecrated Shrines Darshan Gallery
+Interactive modal slideshow documenting the five sacred Murtis:
+1. **Kuldevi Mata Sheetla** (Presiding Deity of Health & Auspicious Grace)
+2. **Bhagwan Shiv Shankar** (Panchavaktra Mahadev)
+3. **Sankat Mochan Hanuman Ji** (Siddhi & Raksha)
+4. **Maryada Purushottam Shree Ram Darbar** (Dharma & Maryada)
+5. **Gugga Jaharpeer Ji** (Ancient Regional Protector)
+
+### 🤝 5. Transparent Devotee Seva (Donations)
+- **Direct Official Trust Account:** All donations credit directly to the **MANAGING COMMITTEE SITTA TAMPLE** account at UCO Bank, Tauni Devi Branch.
+- **Zero Intermediaries:** Official UPI ID (`sittatample8577@ucobank`) with one-touch copy and QR deep-linking.
+- **Purpose Selection:** Langar Seva, Gau Seva, Navratri Puja, or Temple Renovation.
+
+---
+
+## 🛠️ Technology Stack
+
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend Framework** | [React 18.3](https://react.dev/) + [TypeScript 5.5](https://www.typescriptlang.org/) |
+| **Bundler & Build Tool** | [Vite 5.4](https://vitejs.dev/) with optimized code-splitting chunks |
+| **Styling & Design System** | [Tailwind CSS 3.4](https://tailwindcss.com/) + Custom Glassmorphism tokens (`index.css`) |
+| **Animations & Motion** | [Framer Motion 11](https://www.framer.com/motion/) |
+| **Icons** | [Lucide React](https://lucide.dev/) |
+| **Routing** | [React Router DOM v6](https://reactrouter.com/) with animated page transitions |
+| **Typography** | Google Sans, Plus Jakarta Sans, Rozha One, Devanagari Fonts |
+
+---
+
+## 📂 Project Directory Structure
 
 ```text
-📦 src
- ┣ 📂 assets         # Optimized imagery, cinematic videos, and SVGs
- ┣ 📂 components     # Reusable, highly abstracted React UI components
- ┃ ┣ 📂 common       # Shared UI (Buttons, Modals, Section Headings)
- ┃ ┣ 📂 donation     # Secure donation flow components (Amount, Purpose, Proof, Receipt)
- ┃ ┣ 📂 festivals    # Event and celebration cards
- ┃ ┣ 📂 layout       # Core layouts (Navbar, Footer, Loader)
- ┃ ┗ 📂 village      # Cinematic village and drone components
- ┣ 📂 config         # Global configurations (Donation limits, Test modes)
- ┣ 📂 context        # React Context (Language/Theming)
- ┣ 📂 data           # Static data dictionaries (Events, Temple, Announcements)
- ┣ 📂 hooks          # Custom React hooks
- ┣ 📂 pages          # Route-level page components (Home, Village, Donate, etc.)
- ┣ 📂 utils          # Utility functions (Calculators, Validators, Generators)
- ┣ 📜 App.tsx        # Main application router and shell
- ┣ 📜 index.css      # Tailwind core and custom utility classes
- ┗ 📜 main.tsx       # Entry point
+Sheetla-Mata-Mandir-Website/
+├── public/                 # Static assets, PWA icons, manifest, favicons
+├── src/
+│   ├── assets/             # High-definition WebP & PNG temple assets
+│   ├── components/
+│   │   ├── about/          # Temple history stone & architecture components
+│   │   ├── common/         # Button, DarshanModal, GallerySection, ScrollToTop, Loader
+│   │   ├── donation/       # Transparent payment panel, amount selectors, security notices
+│   │   ├── festivals/      # Jagran performers, festive event schedules
+│   │   ├── home/           # Cinematic HeroSlideshow
+│   │   ├── layout/         # Header Navbar, Footer, Mobile Navigation
+│   │   ├── ui/             # BottomNavBar, AnimatedHikeCard (card-25)
+│   │   └── village/        # Village landscape cards and cultural showcases
+│   ├── config/             # Temple configurations & donation constants
+│   ├── context/            # LanguageContext (Hindi / English state)
+│   ├── data/               # Announcements, temple timings, darshan deities data
+│   ├── pages/              # Home, About, Gallery, Festivals, Village, Visit, Donate, Contact, PrivacyPolicy, TermsOfService
+│   ├── translations/       # hi.ts and en.ts translation dictionaries
+│   ├── App.tsx             # Root application shell & routing
+│   ├── index.css           # Design tokens, liquid buttons, typography rules
+│   └── main.tsx            # React application entry point
+├── index.html              # HTML5 entry with SEO tags & preloaded fonts
+├── tailwind.config.js      # Custom colors (vermilion, amber, gold, slate) & typography
+├── tsconfig.json           # Strict TypeScript configuration
+└── vite.config.ts          # Vite build config with manual chunking
 ```
 
-## 📸 Screenshots
+---
 
-*(Placeholders for future screenshots. Ensure paths point to `/public` or external CDN)*
+## 🚀 Getting Started
 
-| Home Page | Gallery | Donation Flow |
-| :---: | :---: | :---: |
-| ![Home](https://via.placeholder.com/400x250.png?text=Home+Page) | ![Gallery](https://via.placeholder.com/400x250.png?text=Gallery) | ![Donation](https://via.placeholder.com/400x250.png?text=Donation+Flow) |
+### Prerequisites
+- **Node.js** `v18.0.0` or higher
+- **npm** `v9.0.0` or higher
 
-## 🚀 Installation
-
-Ensure you have Node.js (v18 or higher) installed.
+### Installation
 
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/harshlagwal/Sheetla-Mata-Mandir-Website.git
 
-# Navigate into the project directory
+# 2. Navigate to directory
 cd Sheetla-Mata-Mandir-Website
 
-# Install dependencies
+# 3. Install dependencies
 npm install
 
-# Start the development server
+# 4. Start local development server
 npm run dev
 ```
 
-## 🏗️ Production Build
+Visit `http://localhost:5173` in your browser.
 
-To test the application for production deployment:
+---
 
-```bash
-# Build the project (includes TypeScript type checking)
-npm run build
+## 🏗️ Available Scripts
 
-# Preview the built assets locally
-npm run preview
-```
+| Command | Purpose |
+| :--- | :--- |
+| `npm run dev` | Starts Vite dev server with hot module replacement (HMR) |
+| `npm run build` | Runs TypeScript typecheck (`tsc`) and builds production bundle to `dist/` |
+| `npm run preview` | Locally preview the built production bundle |
+| `npm run lint` | Run ESLint / code quality checks |
 
-## ⚙️ Configuration
+---
 
-- **EmailJS Setup:** Ensure your EmailJS service ID, template ID, and public key are securely injected at runtime if utilizing the contact forms.
-- **Donation Configuration:** Review `/src/config/donation.ts` to adjust UPI IDs, maximum limits, and test modes.
-- **Translation Files:** All localized strings are maintained centrally in the application state to ensure type safety.
+## 🛡️ Security & Privacy Compliance
 
-## ⚡ Performance
+- **No Third-Party Intermediaries:** Payments are processed directly through devotee banking applications via standardized UPI protocols.
+- **Zero Personal Data Storage:** No tracking cookies, telemetry databases, or unauthorized user data collection.
+- **Client-Side Form Validation:** Anti-spam input sanitation on contact forms.
+- **Legal Compliance:** Comprehensive [Privacy Policy](file:///src/pages/PrivacyPolicy.tsx) and [Terms of Service](file:///src/pages/TermsOfService.tsx).
 
-- **Lazy Loading:** All heavy assets, especially videos and large images, are lazy-loaded.
-- **Optimized Images:** High-resolution WebP formats are used aggressively to reduce footprint.
-- **Video Optimizations:** The drone cinematic videos use `preload="metadata"` and pause automatically when off-screen.
-- **Responsive:** Fluid typography and layout systems adapt instantly to viewport changes.
-
-## 🛡️ Security
-
-- **No Sensitive Data Stored:** The repository has been fully audited to ensure zero leakage of API keys, `.env` files, or personal information.
-- **Client-Side Validation:** All forms enforce strict validation rules before any network request.
-- **Safe UPI URI Generation:** Secure string serialization for dynamic payment links.
-- **WhatsApp Verification Workflow:** Relies on robust deep linking without exposing internal contact routing logic.
-- **Protected Contact Form:** Enforces rate-limiting and validation patterns against spam.
+---
 
 ## 🌍 Deployment
 
-This repository is optimized for edge-network deployments and is fully compatible with:
-- GitHub Pages
-- Vercel
-- Netlify
-- Cloudflare Pages
+The application is structured for instant zero-config static edge deployment:
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
+- **Supported Platforms:** Vercel, Netlify, Cloudflare Pages, GitHub Pages
 
-Simply set the build command to `npm run build` and the output directory to `dist`.
+---
 
-## 🗺️ Roadmap
+## 📜 License
 
-Future enhancements planned for the platform:
-- [ ] Online verified donation backend
-- [ ] Volunteer Portal for festival organizing
-- [ ] Live Festival Broadcast integration
-- [ ] Dedicated Temple Admin Dashboard
+This project is open-source and released under the **[MIT License](LICENSE)**.
 
-## 🤝 Contributing
+---
 
-We welcome contributions to improve the digital footprint of the temple!
-Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.
+## 🙏 Dedication & Acknowledgements
 
-## 📄 License
-
-This project is licensed under the [MIT License](./LICENSE).
-
-## 👨‍💻 Developer
-
-Created and maintained by:
-
-**Harsh Lagwal**  
-- [GitHub](https://github.com/harshlagwal)
-- [LinkedIn](#) *(Update with your actual LinkedIn profile)*
+<div align="center">
+  <p>
+    <strong>सप्रेम समर्पित:</strong> पावन ग्राम लगदेवी एवं कुलदेवी श्री शीतला माता मंदिर प्रबंधकारिणी समिति।<br />
+    <em>Conceived, Designed & Developed with Devotion by <strong>Harsh Lagwal</strong>.</em>
+  </p>
+  <p>
+    ॥ जय माता दी • जय माँ शीतला ॥
+  </p>
+</div>

@@ -44,6 +44,7 @@ export default {
         display: ['"Playfair Display"', 'serif'],
         body: ['Montserrat', 'sans-serif'],
         hindi: ['"Noto Sans Devanagari"', 'sans-serif'],
+        google: ['"Plus Jakarta Sans"', '"Google Sans"', 'sans-serif'],
       },
       spacing: {
         'container-max': '1280px',
