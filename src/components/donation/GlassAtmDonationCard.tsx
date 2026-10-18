@@ -163,30 +163,30 @@ export const GlassAtmDonationCard: React.FC<GlassAtmDonationCardProps> = ({ clas
           <div className="relative h-full p-4 sm:p-5 flex flex-col justify-between text-white">
             {/* Top Row: Bank Info & Temple Trust Header */}
             <div className="flex items-start justify-between gap-2">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 via-amber-600 to-amber-700 flex items-center justify-center shadow-[0_2px_8px_rgba(217,119,6,0.4)] border border-amber-200/50">
-                  <Building2 className="w-4 h-4 text-slate-950 stroke-[2.5]" />
+              <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-amber-400 via-amber-600 to-amber-700 flex items-center justify-center shadow-[0_2px_8px_rgba(217,119,6,0.4)] border border-amber-200/50 shrink-0">
+                  <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-950 stroke-[2.5]" />
                 </div>
-                <div>
-                  <div className="font-google font-extrabold text-xs sm:text-sm tracking-wide text-amber-200 uppercase flex items-center gap-1.5">
+                <div className="min-w-0">
+                  <div className="font-google font-extrabold text-[11px] xs:text-xs sm:text-sm tracking-wide text-amber-200 uppercase flex items-center gap-1 sm:gap-1.5 truncate">
                     <span>{DONATION_CONFIG.bankName}</span>
-                    <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-400/20 text-amber-300 font-mono border border-amber-400/30">
+                    <span className="text-[9px] sm:text-[10px] px-1 sm:px-1.5 py-0.2 rounded bg-amber-400/20 text-amber-300 font-mono border border-amber-400/30 shrink-0">
                       LAGDEVI
                     </span>
                   </div>
-                  <div className="text-[10px] text-amber-100/70 font-mono tracking-wider">
+                  <div className="text-[9px] sm:text-[10px] text-amber-100/70 font-mono tracking-wider truncate">
                     HAMIRPUR • HIMACHAL PRADESH
                   </div>
                 </div>
               </div>
 
               {/* Temple Crest / Holographic Badge */}
-              <div className="text-right">
-                <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[10px] font-semibold text-amber-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                  <span>SEVA CARD</span>
+              <div className="text-right shrink-0">
+                <div className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[8.5px] xs:text-[9.5px] sm:text-[10px] font-semibold text-amber-300 whitespace-nowrap shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping shrink-0" />
+                  <span className="whitespace-nowrap tracking-tight">SEVA CARD</span>
                 </div>
-                <div className="text-[9px] font-hindi text-amber-200/80 mt-0.5">
+                <div className="text-[8px] xs:text-[9px] font-hindi text-amber-200/80 mt-0.5 whitespace-nowrap">
                   ॥ श्री शीतलायै नमः ॥
                 </div>
               </div>
