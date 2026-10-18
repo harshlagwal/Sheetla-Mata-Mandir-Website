@@ -22,11 +22,13 @@ export const Contact: React.FC = () => {
       <section className="relative px-4 sm:px-6 max-w-[1240px] mx-auto text-center flex flex-col items-center mb-12 sm:mb-16 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[300px] bg-gradient-to-b from-amber-400/15 via-amber-200/5 to-transparent blur-3xl pointer-events-none -z-10" />
 
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-900 text-xs font-semibold mb-3 backdrop-blur-xs shadow-2xs">
-          <Sparkles className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-          <span className="font-hindi tracking-wider">॥ ॐ श्री शीतलायै नमः ॥</span>
-          <span className="text-amber-800/40">•</span>
-          <span className="text-[11px] font-mono tracking-widest uppercase text-amber-800">
+        <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-4 sm:px-3.5 py-1.5 sm:py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-900 text-xs font-semibold mb-3 backdrop-blur-xs shadow-2xs text-center max-w-full">
+          <div className="inline-flex items-center gap-1.5 whitespace-nowrap">
+            <Sparkles className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+            <span className="font-hindi tracking-wider text-[11px] sm:text-xs">॥ ॐ श्री शीतलायै नमः ॥</span>
+          </div>
+          <span className="hidden sm:inline text-amber-800/40 shrink-0">•</span>
+          <span className="text-[10px] sm:text-[11px] font-mono tracking-wider sm:tracking-widest uppercase text-amber-800 whitespace-nowrap">
             {isHindi ? 'स्थान एवं संपर्क' : 'LOCATION & CONTACT'}
           </span>
         </div>
