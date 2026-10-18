@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { templeData, TEMPLE_LOCATION } from '../data/temple';
@@ -35,6 +35,7 @@ import {
   Layers,
   Map as MapIcon
 } from 'lucide-react';
+import { LotusWatermark } from '../components/common/LotusWatermark';
 
 type RouteType = 'uhal' | 'jandru';
 type MapViewMode = 'normal' | 'satellite';
@@ -135,11 +136,13 @@ export const Visit: React.FC = () => {
   });
 
   return (
-    <div className="w-full bg-[#fdfbf9] text-slate-900 selection:bg-amber-500/20 selection:text-amber-900 pt-28 sm:pt-32 pb-24 overflow-x-hidden">
+    <div className="relative w-full max-w-full bg-[#fdfbf9] text-slate-900 selection:bg-amber-500/20 selection:text-amber-900 pt-28 sm:pt-32 pb-24 overflow-x-hidden">
       
       {/* ── 1. CLEAN EDITORIAL HERO (GOOGLE-LIKE MINIMAL) ── */}
-      <section className="relative px-4 sm:px-6 max-w-[1240px] mx-auto text-center flex flex-col items-center mb-8 sm:mb-12">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[320px] bg-gradient-to-b from-amber-400/15 via-amber-200/5 to-transparent blur-3xl pointer-events-none -z-10" />
+      <section className="relative px-4 sm:px-6 max-w-[1240px] mx-auto text-center flex flex-col items-center mb-8 sm:mb-12 overflow-hidden">
+        <LotusWatermark position="top-right" size="lg" opacity={0.06} />
+        <LotusWatermark position="bottom-left" size="lg" opacity={0.06} mirrored />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[320px] bg-gradient-to-b from-amber-400/15 via-amber-200/5 to-transparent blur-3xl pointer-events-none -z-10" />
 
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-900 text-xs font-semibold mb-3 backdrop-blur-xs shadow-2xs">
           <Sparkles className="w-3.5 h-3.5 text-amber-600 shrink-0" />
@@ -150,7 +153,7 @@ export const Visit: React.FC = () => {
           </span>
         </div>
 
-        <h1 className="font-google text-[2rem] sm:text-[2.5rem] md:text-[3rem] font-bold text-slate-900 tracking-[-0.02em] leading-[1.15] max-w-3xl">
+        <h1 className="font-google text-[1.45rem] xs:text-[1.75rem] sm:text-[2.5rem] md:text-[3rem] font-bold text-slate-900 tracking-[-0.02em] leading-[1.18] max-w-3xl">
           {isHindi ? 'पावन लगदेवी धाम दर्शन निर्देशिका' : 'Plan Your Sacred Visit to Lagdevi'}
         </h1>
 
@@ -162,7 +165,8 @@ export const Visit: React.FC = () => {
       </section>
 
       {/* ── 2. EDITORIAL COLUMNS & MAP SECTION (CONTAINER ALIGNED) ── */}
-      <section className="max-w-[1240px] mx-auto px-4 sm:px-6 space-y-12">
+      <section className="relative max-w-[1240px] mx-auto px-4 sm:px-6 space-y-12 overflow-hidden">
+        <LotusWatermark position="bottom-right" size="lg" opacity={0.05} />
         {/* ── 3 EDITORIAL COLUMNS (ANTIGRAVITY WITH LIQUID GLASS BUTTONS) ── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12 items-start">
             

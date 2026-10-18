@@ -52,7 +52,7 @@ export function BottomNavBar({
   // Find initial index matching current route
   const getInitialIndex = () => {
     const routeIndex = items.findIndex((item) => item.href === location.pathname);
-    return routeIndex !== -1 ? routeIndex : defaultIndex;
+    return routeIndex;
   };
 
   const [activeIndex, setActiveIndex] = useState<number>(getInitialIndex);
@@ -60,9 +60,7 @@ export function BottomNavBar({
   // Sync active index with router navigation
   useEffect(() => {
     const routeIndex = items.findIndex((item) => item.href === location.pathname);
-    if (routeIndex !== -1) {
-      setActiveIndex(routeIndex);
-    }
+    setActiveIndex(routeIndex);
   }, [location.pathname, items]);
 
   const handleSelect = (idx: number, item: BottomNavItem) => {

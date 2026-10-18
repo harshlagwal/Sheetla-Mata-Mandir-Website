@@ -209,7 +209,7 @@ export const GallerySection: React.FC<GallerySectionProps> = React.memo(
                 <span>॥ ॐ श्री शीतलायै नमः ॥ • SACRED DARSHAN</span>
               </div>
 
-              <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-slate-950 tracking-tight leading-tight">
+              <h2 className="font-display font-bold text-xl sm:text-3xl md:text-4xl text-slate-950 tracking-tight leading-tight">
                 {isHindi ? 'पावन दर्शन एवं सांस्कृतिक धरोहर' : 'Experience the Divine Darshan'}
               </h2>
 
@@ -269,7 +269,7 @@ export const GallerySection: React.FC<GallerySectionProps> = React.memo(
                     </div>
 
                     {/* Bold Title */}
-                    <h3 className="font-google text-xl sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
+                    <h3 className="font-google text-lg sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
                       {isHindi ? album.hindiTitle : album.title}
                     </h3>
 

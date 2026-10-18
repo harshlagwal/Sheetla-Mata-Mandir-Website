@@ -33,5 +33,9 @@ coverage
 # Cache and logs
 cache
 .qodo
+.wrangler
 *.timestamp-*.mjs
 *.tmp
+*.pem
+*.key
+

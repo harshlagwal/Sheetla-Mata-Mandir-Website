@@ -10,14 +10,15 @@ export const MotionImage = memo(({ className = '', ...props }: MotionImageProps)
 
   return (
     <motion.img
-      className={className}
-      initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.98 }}
+      className={`will-change-[opacity,transform] ${className}`}
+      initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.97 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: '0px' }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
       {...props}
     />
   );
 });
 
 MotionImage.displayName = 'MotionImage';
+

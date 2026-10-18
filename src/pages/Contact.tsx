@@ -16,11 +16,11 @@ export const Contact: React.FC = () => {
   const { isHindi } = useLanguage();
 
   return (
-    <div className="w-full bg-[#f8f6f2] text-slate-900 selection:bg-amber-500/20 selection:text-amber-900 pt-28 sm:pt-32 pb-24 overflow-x-hidden min-h-screen">
+    <div className="relative w-full max-w-full bg-[#f8f6f2] text-slate-900 selection:bg-amber-500/20 selection:text-amber-900 pt-28 sm:pt-32 pb-24 overflow-x-hidden min-h-screen">
       
       {/* ── 1. CENTERED EDITORIAL HERO (NO HEAVY CARDS) ── */}
-      <section className="relative px-4 sm:px-6 max-w-[1240px] mx-auto text-center flex flex-col items-center mb-12 sm:mb-16">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gradient-to-b from-amber-400/15 via-amber-200/5 to-transparent blur-3xl pointer-events-none -z-10" />
+      <section className="relative px-4 sm:px-6 max-w-[1240px] mx-auto text-center flex flex-col items-center mb-12 sm:mb-16 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[300px] bg-gradient-to-b from-amber-400/15 via-amber-200/5 to-transparent blur-3xl pointer-events-none -z-10" />
 
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-900 text-xs font-semibold mb-3 backdrop-blur-xs shadow-2xs">
           <Sparkles className="w-3.5 h-3.5 text-amber-600 shrink-0" />
@@ -31,7 +31,7 @@ export const Contact: React.FC = () => {
           </span>
         </div>
 
-        <h1 className="font-google text-[2.2rem] sm:text-[2.8rem] md:text-[3.2rem] font-bold text-slate-950 tracking-[-0.02em] leading-[1.15] max-w-3xl">
+        <h1 className="font-google text-[1.5rem] xs:text-[1.85rem] sm:text-[2.8rem] md:text-[3.2rem] font-bold text-slate-950 tracking-[-0.02em] leading-[1.18] max-w-3xl">
           {isHindi ? 'मंदिर का पता एवं संपर्क' : 'Temple Address & Contact'}
         </h1>
 

@@ -20,33 +20,35 @@ import { HeroSlideshow } from '../components/home/HeroSlideshow';
 import { LatestTempleUpdate } from '../components/common/LatestTempleUpdate';
 import { GallerySection } from '../components/common/GallerySection';
 import { Button } from '../components/common/Button';
+import { LotusWatermark } from '../components/common/LotusWatermark';
 
 import lagdeviViewImg from '../assets/lagdevi view.webp';
 import mandirUnderImg from '../assets/mandir under image.webp';
 
-// Smooth staggered animation variants for Welcome Section
+// Smooth staggered animation variants for Welcome Section with Apple Easing
 const welcomeContainerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.08,
+      staggerChildren: 0.1,
+      delayChildren: 0.05,
     },
   },
 };
 
 const welcomeItemVariants = {
-  hidden: { opacity: 0, y: 22 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.55,
-      ease: [0.21, 0.47, 0.32, 0.98],
+      duration: 0.65,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 };
+
 
 export const Home: React.FC = () => {
   const { t, isHindi } = useLanguage();
@@ -66,7 +68,8 @@ export const Home: React.FC = () => {
       {/* ══════════════════════════════════════════════════════════════
           ZONE 2: DAILY DIVINE EXPERIENCE BENTO (PERFECT 3-PILLAR GRID)
          ══════════════════════════════════════════════════════════════ */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 max-w-[1240px] mx-auto w-full">
+      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 max-w-[1240px] mx-auto w-full overflow-hidden">
+        <LotusWatermark position="bottom-right" size="lg" opacity={0.05} />
         <motion.div
           variants={welcomeContainerVariants}
           initial="hidden"
@@ -85,7 +88,7 @@ export const Home: React.FC = () => {
             
             <motion.h2 
               variants={welcomeItemVariants}
-              className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight"
+              className="font-display text-xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight"
             >
               {t.home.welcomeHeading}
             </motion.h2>
@@ -166,7 +169,7 @@ export const Home: React.FC = () => {
                   <span>{isHindi ? 'दैनिक आरती • DAILY AARTI' : 'DAILY AARTI & TIMINGS'}</span>
                 </div>
 
-                <h3 className="font-google text-xl sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
+                <h3 className="font-google text-lg sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
                   {isHindi ? 'दैनिक आरती एवं पावन दर्शन समय' : 'Daily Aarti & Sacred Darshan Hours'}
                 </h3>
 
@@ -242,7 +245,7 @@ export const Home: React.FC = () => {
                   <span>{isHindi ? 'पावन गर्भगृह • ANCIENT SHRINE' : 'AKHAND JYOTI & DEVOTION'}</span>
                 </div>
 
-                <h3 className="font-google text-xl sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
+                <h3 className="font-google text-lg sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
                   {isHindi ? 'अखंड पावन ज्योति एवं जाग्रत स्वरूप' : 'Eternal Akhand Jyoti & Living Sanctum'}
                 </h3>
 
@@ -328,7 +331,7 @@ export const Home: React.FC = () => {
                   <span>{isHindi ? 'सुगम मार्ग • LOCATION & REACH' : 'LOCATION & DIRECTIONS'}</span>
                 </div>
 
-                <h3 className="font-google text-xl sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
+                <h3 className="font-google text-lg sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
                   {isHindi ? 'शीतला माता मंदिर लगदेवी (हमीरपुर)' : 'Temple Location & Sacred Reach'}
                 </h3>
 
@@ -382,7 +385,8 @@ export const Home: React.FC = () => {
       {/* ══════════════════════════════════════════════════════════════
           ZONE 3: HERITAGE & VILLAGE LAGDEVI SHOWCASE
          ══════════════════════════════════════════════════════════════ */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white border-y border-slate-200/80 px-4 sm:px-6 max-w-[1240px] mx-auto w-full">
+      <section className="relative py-12 sm:py-16 md:py-20 bg-white border-y border-slate-200/80 px-4 sm:px-6 max-w-[1240px] mx-auto w-full overflow-hidden">
+        <LotusWatermark position="top-right" size="lg" opacity={0.04} />
         <motion.div
           variants={welcomeContainerVariants}
           initial="hidden"
@@ -401,7 +405,7 @@ export const Home: React.FC = () => {
             
             <motion.h2 
               variants={welcomeItemVariants}
-              className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight"
+              className="font-display text-xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight"
             >
               {isHindi ? 'पवित्र लगदेवी गाँव की प्राकृतिक छटा एवं आत्मीय सौहार्द' : 'Living Heritage of Scenic Village Lagdevi'}
             </motion.h2>
@@ -517,7 +521,8 @@ export const Home: React.FC = () => {
       {/* ══════════════════════════════════════════════════════════════
           ZONE 4: DEVOTEE SEVA (DONATION) & REAL-TIME NOTICE SHOWCASES
          ══════════════════════════════════════════════════════════════ */}
-      <section className="py-12 sm:py-16 md:py-20 bg-[#fdfbf9] px-4 sm:px-6 max-w-[1240px] mx-auto w-full">
+      <section className="relative py-12 sm:py-16 md:py-20 bg-[#fdfbf9] px-4 sm:px-6 max-w-[1240px] mx-auto w-full overflow-hidden">
+        <LotusWatermark position="bottom-left" size="lg" opacity={0.05} mirrored />
         <motion.div
           variants={welcomeContainerVariants}
           initial="hidden"
@@ -536,7 +541,7 @@ export const Home: React.FC = () => {
             
             <motion.h2 
               variants={welcomeItemVariants}
-              className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight"
+              className="font-display text-xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight"
             >
               {isHindi ? 'श्रद्धालु सेवा सहयोग एवं ताज़ा मंदिर घोषणाएं' : 'Devotee Seva & Official Mandir Updates'}
             </motion.h2>
@@ -614,7 +619,7 @@ export const Home: React.FC = () => {
                   <span>{isHindi ? 'पावन सेवा • SACRED CONTRIBUTIONS' : 'DEVOTEE SEVA • TEMPLE DEVELOPMENT'}</span>
                 </div>
 
-                <h3 className="font-google text-xl sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
+                <h3 className="font-google text-lg sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
                   {isHindi ? 'मंदिर विकास एवं नित्य लंगर सेवा सहयोग' : 'Temple Development & Langar Seva'}
                 </h3>
 
@@ -718,7 +723,7 @@ export const Home: React.FC = () => {
                   <span>{isHindi ? 'आधिकारिक सूचनाएं • OFFICIAL NOTICES' : 'OFFICIAL NOTICES • MANDIR UPDATES'}</span>
                 </div>
 
-                <h3 className="font-google text-xl sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
+                <h3 className="font-google text-lg sm:text-2xl md:text-3xl font-bold text-slate-950 tracking-tight leading-snug mb-2.5 sm:mb-3">
                   {isHindi ? 'आधिकारिक मंदिर सूचनाएं एवं समय परिवर्तन' : 'Official Notices & Mandir Updates'}
                 </h3>
 

@@ -4,6 +4,7 @@ import { Compass, Shield, Users, Landmark, Clock, Sparkles } from 'lucide-react'
 import { TempleHistoryStone } from '../components/about/TempleHistoryStone';
 import { SectionReveal } from '../components/motion/SectionReveal';
 import { MotionCard } from '../components/motion/MotionCard';
+import { LotusWatermark } from '../components/common/LotusWatermark';
 
 export const About: React.FC = () => {
   const { t, isHindi } = useLanguage();
@@ -44,14 +45,15 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <div className="w-full pt-28 pb-20 bg-[#fdfbf9] text-slate-900 overflow-x-hidden">
+    <div className="relative w-full max-w-full pt-28 pb-20 bg-[#fdfbf9] text-slate-900 overflow-x-hidden">
       {/* ── HERO BANNER ── */}
-      <SectionReveal className="py-12 md:py-16 px-6 max-w-[1240px] mx-auto text-center border-b border-slate-200/80 mb-12">
+      <SectionReveal className="relative py-12 md:py-16 px-6 max-w-[1240px] mx-auto text-center border-b border-slate-200/80 mb-12 overflow-hidden">
+        <LotusWatermark position="top-right" size="lg" opacity={0.05} />
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded border border-slate-300 text-slate-700 text-[10.5px] font-mono uppercase tracking-wider mb-3 bg-white">
           <Sparkles className="w-3.5 h-3.5 text-amber-600" />
           <span>TEMPLE HERITAGE & ORIGINS</span>
         </div>
-        <h1 className="font-display text-3xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight">
+        <h1 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight">
           {t.about.heroTitle}
         </h1>
         <p className="font-body text-xs sm:text-sm md:text-base text-slate-600 max-w-2xl mx-auto mt-3 leading-relaxed">
@@ -64,6 +66,8 @@ export const About: React.FC = () => {
         
         {/* Section 1: The Authentic Ancient Shilalekh Stone Inscription (Exact Screenshot Look) */}
         <div className="w-full bg-[#0b0c0b] text-[#f1ece1] rounded-3xl py-12 px-4 sm:px-8 border border-[#282b28] relative overflow-hidden shadow-2xl">
+          <LotusWatermark position="bottom-right" size="lg" opacity={0.16} />
+          <LotusWatermark position="bottom-left" size="lg" opacity={0.16} mirrored />
           <div
             className="absolute inset-0 pointer-events-none z-0"
             style={{
@@ -144,12 +148,13 @@ export const About: React.FC = () => {
         </SectionReveal>
 
         {/* Section 3: Heritage Timeline */}
-        <SectionReveal className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200/80 shadow-xs">
+        <SectionReveal className="relative bg-white p-6 sm:p-10 rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden">
+          <LotusWatermark position="bottom-right" size="md" opacity={0.05} />
           <div className="mb-8 text-center max-w-xl mx-auto">
             <span className="text-[10px] font-mono uppercase tracking-wider text-amber-800 font-bold block mb-1">
               CHRONICLE OF FAITH
             </span>
-            <h3 className="font-display text-xl md:text-3xl font-bold text-slate-900 tracking-tight">
+            <h3 className="font-display text-lg sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
               {isHindi ? 'परंपराओं का कालक्रमानुसार इतिहास' : 'Preserving Traditions Through Time'}
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">

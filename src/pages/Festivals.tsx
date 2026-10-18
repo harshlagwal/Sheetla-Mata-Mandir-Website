@@ -21,6 +21,7 @@ import {
 } from '../data/festivalsData';
 import { UpcomingTempleEvent } from '../components/common/UpcomingTempleEvent';
 import { JagranPerformers } from '../components/festivals/JagranPerformers';
+import { LotusWatermark } from '../components/common/LotusWatermark';
 
 const C = {
   ivory: '#fdf8f0',
@@ -138,7 +139,7 @@ export const Festivals: React.FC = () => {
   ];
 
   return (
-    <div className="w-full pt-24 md:pt-28 pb-24" style={{ background: C.ivory }}>
+    <div className="relative w-full max-w-full pt-24 md:pt-28 pb-24 overflow-x-hidden" style={{ background: C.ivory }}>
       {/* ─── Hero Header ────────────────────────────────────────── */}
       <section
         className="py-12 md:py-16 px-4 md:px-8 text-center border-b relative overflow-hidden"
@@ -147,6 +148,8 @@ export const Festivals: React.FC = () => {
           borderColor: C.mutedBorder,
         }}
       >
+        <LotusWatermark position="top-right" size="lg" opacity={0.06} />
+        <LotusWatermark position="bottom-left" size="lg" opacity={0.06} mirrored />
         <div className="max-w-3xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
@@ -168,7 +171,7 @@ export const Festivals: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="font-display font-bold leading-tight"
-            style={{ fontSize: 'clamp(1.85rem, 4.5vw, 2.85rem)', color: C.maroon }}
+            style={{ fontSize: 'clamp(1.35rem, 4.5vw, 2.85rem)', color: C.maroon }}
           >
             {isHindi
               ? 'हमारे वार्षिक उत्सव एवं धार्मिक परंपराएँ'

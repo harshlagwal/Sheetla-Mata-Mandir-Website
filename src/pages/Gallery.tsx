@@ -17,11 +17,11 @@ export const Gallery: React.FC = () => {
           <span>VIRTUAL SANCTUM • दिव्य दर्शन</span>
         </div>
 
-        <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 leading-tight tracking-tight">
+        <h1 className="font-display font-bold text-2xl xs:text-3xl sm:text-4xl md:text-5xl text-slate-900 leading-tight tracking-tight">
           {isHindi ? 'पावन दर्शन गैलरी' : 'Sacred Darshan Gallery'}
         </h1>
 
-        <p className="font-display text-base md:text-lg text-amber-800 font-semibold mt-1">
+        <p className="font-display text-xs sm:text-base md:text-lg text-amber-800 font-semibold mt-1">
           {isHindi
             ? 'श्री शीतला माता मंदिर, लगदेवी • दिव्य दर्शन व आरती संग्रह'
             : 'Shri Sheetla Mata Mandir, Lagdevi • Complete Glimpse Collection'}

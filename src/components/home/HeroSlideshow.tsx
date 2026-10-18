@@ -37,7 +37,7 @@ export const HeroSlideshow: React.FC = () => {
       className="relative w-full pt-28 sm:pt-32 md:pt-36 pb-14 md:pb-20 bg-[#fdfbf9] text-slate-900 overflow-hidden select-none"
     >
       {/* ── 1. ATMOSPHERIC DIVINE AMBIENT HALO IN BACKGROUND ── */}
-      <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-amber-400/20 via-amber-200/10 to-transparent blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 w-full max-w-[900px] h-[450px] bg-gradient-to-b from-amber-400/20 via-amber-200/10 to-transparent blur-3xl pointer-events-none -z-10" />
 
       {/* ── 2. EDITORIAL HERO HEADER (CLEAN IVORY CANVAS & MAJESTIC TYPOGRAPHY) ── */}
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
@@ -62,19 +62,19 @@ export const HeroSlideshow: React.FC = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.08 }}
-          className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.12] max-w-4xl"
+          className="font-display text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.15] max-w-4xl"
         >
           {isHindi ? (
             <>
               श्री शीतला माता पावन धाम
-              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-amber-800/90 mt-2 sm:mt-2.5">
+              <span className="block text-sm xs:text-base sm:text-3xl md:text-4xl lg:text-5xl font-medium text-amber-800/90 mt-2 sm:mt-2.5">
                 लगदेवी, हमीरपुर • हिमाचल प्रदेश
               </span>
             </>
           ) : (
             <>
               Shree Sheetla Mata Mandir
-              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-amber-800/90 mt-2 sm:mt-2.5">
+              <span className="block text-sm xs:text-base sm:text-3xl md:text-4xl lg:text-5xl font-medium text-amber-800/90 mt-2 sm:mt-2.5">
                 Historic Himalayan Sanctuary • Lagdevi
               </span>
             </>

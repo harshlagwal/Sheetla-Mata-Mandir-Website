@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { Sparkles, Heart, ChevronDown } from 'lucide-react';
+import { LotusWatermark } from '../components/common/LotusWatermark';
 import newSheetlaImg from '../assets/new-sheetla.webp';
 import shivjiImg     from '../assets/Shivji New.webp';
 import hanumanImg    from '../assets/Hanuman.webp';
@@ -86,14 +87,16 @@ export const MataSheetla: React.FC = () => {
   ];
 
   return (
-    <div className="w-full pt-28 pb-20">
+    <div className="relative w-full max-w-full pt-28 pb-20 overflow-x-hidden">
       {/* Hero */}
-      <section className="bg-surface-container py-16 px-margin-mobile lg:px-margin-desktop mb-16 border-b border-outline-variant/30 text-center">
+      <section className="relative bg-surface-container py-16 px-margin-mobile lg:px-margin-desktop mb-16 border-b border-outline-variant/30 text-center overflow-hidden">
+        <LotusWatermark position="top-right" size="lg" opacity={0.06} />
+        <LotusWatermark position="bottom-left" size="lg" opacity={0.06} mirrored />
         <div className="max-w-3xl mx-auto space-y-3">
           <span className="font-hindi text-3xl text-tertiary font-bold tracking-widest block">
             {isHindi ? '॥ माँ रानी ॥' : '॥ Mata Rani ॥'}
           </span>
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-primary">
+          <h1 className="font-display text-2xl xs:text-3xl sm:text-4xl md:text-6xl font-bold text-primary">
             {isHindi ? 'पावन माँ रानी धाम' : 'Mata Rani'}
           </h1>
           <p className="font-body text-base md:text-lg text-on-surface-variant leading-relaxed">
@@ -195,8 +198,9 @@ export const MataSheetla: React.FC = () => {
               />
             </div>
             {/* Content (55%) */}
-            <div className="lg:w-[55%] p-8 md:p-12 lg:p-16 flex flex-col justify-center">
-              <span className="font-body text-xs font-bold text-secondary uppercase tracking-widest mb-3 block">
+            <div className="relative overflow-hidden lg:w-[55%] p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+              <LotusWatermark position="bottom-right" size="md" opacity={0.04} />
+              <span className="relative z-10 font-body text-xs font-bold text-secondary uppercase tracking-widest mb-3 block">
                 {isHindi ? 'संबंधित पवित्र देवस्थल' : 'ASSOCIATED SACRED SHRINE'}
               </span>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-primary mb-6">

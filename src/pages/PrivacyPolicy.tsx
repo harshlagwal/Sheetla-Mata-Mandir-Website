@@ -28,10 +28,10 @@ export const PrivacyPolicy: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-[#fdfbf9] text-slate-900 selection:bg-amber-500/20 selection:text-amber-900 pt-28 sm:pt-32 pb-24 overflow-x-hidden min-h-screen">
+    <div className="relative w-full max-w-full bg-[#fdfbf9] text-slate-900 selection:bg-amber-500/20 selection:text-amber-900 pt-28 sm:pt-32 pb-24 overflow-x-hidden min-h-screen">
       
       {/* Ambient Decorative Halo */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[340px] bg-gradient-to-b from-amber-400/12 via-amber-200/5 to-transparent blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[340px] bg-gradient-to-b from-amber-400/12 via-amber-200/5 to-transparent blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-[1000px] mx-auto px-4 sm:px-6">
         
@@ -59,7 +59,7 @@ export const PrivacyPolicy: React.FC = () => {
             </span>
           </div>
 
-          <h1 className="font-google text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-[-0.02em] leading-tight">
+          <h1 className="font-google text-xl sm:text-2xl md:text-4xl font-bold text-slate-900 tracking-[-0.02em] leading-tight">
             {isHindi ? 'गोपनीयता नीति (Privacy Policy)' : 'Privacy Policy & Devotee Trust'}
           </h1>
 

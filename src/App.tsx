@@ -8,6 +8,7 @@ import { PageTransition } from './components/motion/PageTransition';
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { BottomNavBar } from './components/ui/bottom-nav-bar';
+import { ReactLenis } from 'lenis/react';
 
 import { lazy, Suspense } from 'react';
 import { DelayedLoader } from './components/common/DelayedLoader';
@@ -59,18 +60,21 @@ export function App() {
         <TempleLoader onFinish={() => setIsInitialLoading(false)} />
       )}
       <Router>
-        <PanditJiGuide />
-        <div className="min-h-screen flex flex-col justify-between bg-surface font-body text-on-surface">
-          <Navbar />
-          <main className="flex-grow flex flex-col pb-6 xl:pb-0">
-            <AnimatedRoutes />
-          </main>
-          <BottomNavBar stickyBottom className="flex xl:hidden" />
-          <Footer />
-        </div>
+        <ReactLenis root options={{ lerp: 0.08, duration: 1.1, smoothWheel: true }}>
+          <PanditJiGuide />
+          <div className="min-h-screen flex flex-col justify-between bg-surface font-body text-on-surface w-full max-w-[100vw] overflow-x-hidden relative">
+            <Navbar />
+            <main className="flex-grow flex flex-col pb-6 xl:pb-0 w-full max-w-[100vw] overflow-x-hidden">
+              <AnimatedRoutes />
+            </main>
+            <BottomNavBar stickyBottom className="flex xl:hidden" />
+            <Footer />
+          </div>
+        </ReactLenis>
       </Router>
     </LanguageProvider>
   );
 }
 
 export default App;
+

@@ -10,8 +10,6 @@ interface MotionCardProps {
 export const MotionCard = memo(({ children, className = '', onClick }: MotionCardProps) => {
   const shouldReduceMotion = useReducedMotion();
 
-  // On mobile, hover doesn't apply well, and we want to disable this specific scale/shadow on mobile anyway.
-  // Framer Motion's whileHover triggers on desktop hover.
   return (
     <motion.div
       className={className}
@@ -19,13 +17,25 @@ export const MotionCard = memo(({ children, className = '', onClick }: MotionCar
       whileHover={
         !shouldReduceMotion
           ? {
-              y: -6,
+              y: -5,
               scale: 1.01,
-              boxShadow: '0 10px 30px -10px rgba(0,0,0,0.1)',
+              boxShadow: '0 20px 35px -12px rgba(87, 0, 0, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.05)',
             }
           : undefined
       }
-      transition={{ duration: 0.25, ease: 'easeOut' }}
+      whileTap={
+        !shouldReduceMotion
+          ? {
+              scale: 0.985,
+            }
+          : undefined
+      }
+      transition={{
+        type: 'spring',
+        stiffness: 380,
+        damping: 26,
+        mass: 0.7,
+      }}
     >
       {children}
     </motion.div>
@@ -33,3 +43,4 @@ export const MotionCard = memo(({ children, className = '', onClick }: MotionCar
 });
 
 MotionCard.displayName = 'MotionCard';
+

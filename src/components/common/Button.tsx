@@ -43,9 +43,13 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <motion.button
       className={`${baseStyle} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`}
-      whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
-      whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
-      transition={{ duration: 0.18, ease: 'easeOut' }}
+      whileHover={shouldReduceMotion ? {} : { scale: 1.02, y: -1 }}
+      whileTap={shouldReduceMotion ? {} : { scale: 0.96 }}
+      transition={{
+        type: 'spring',
+        stiffness: 420,
+        damping: 24,
+      }}
       {...props}
     >
       {icon && <span className="shrink-0">{icon}</span>}

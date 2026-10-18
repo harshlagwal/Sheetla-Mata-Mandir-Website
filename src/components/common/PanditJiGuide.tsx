@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, X, ChevronUp } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useLenis } from 'lenis/react';
 
 interface GuideDialogue {
   topicHi: string;
@@ -102,7 +103,19 @@ export const PanditJiGuide: React.FC = () => {
     setMode('meditating');
   }, []);
 
-  // When user scrolls, return to meditation posture
+  const lenis = useLenis();
+
+  // Lenis smooth scroll listener: instantly return to meditation on scroll
+  useLenis((lenisInstance) => {
+    const currentScrollY = lenisInstance.scroll;
+    const delta = Math.abs(currentScrollY - lastScrollY.current);
+    if (delta > 8 && mode === 'explaining') {
+      backToMeditation();
+    }
+    lastScrollY.current = currentScrollY;
+  });
+
+  // Native scroll fallback
   useEffect(() => {
     let ticking = false;
 
@@ -112,8 +125,8 @@ export const PanditJiGuide: React.FC = () => {
           const currentScrollY = window.scrollY;
           const delta = Math.abs(currentScrollY - lastScrollY.current);
 
-          // If scrolled significantly while in explaining mode, return to meditation
-          if (delta > 45 && mode === 'explaining') {
+          // If scrolled while in explaining mode, return to meditation
+          if (delta > 8 && mode === 'explaining') {
             backToMeditation();
           }
 
@@ -450,10 +463,17 @@ export const PanditJiGuide: React.FC = () => {
     });
     setMode('explaining');
 
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    if (lenis) {
+      lenis.scrollTo(0, {
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
 
     setTimeout(() => {
       setIsBlessing(false);
@@ -472,7 +492,7 @@ export const PanditJiGuide: React.FC = () => {
     <aside
       data-pandit-widget
       aria-label="Pandit Ji Virtual Temple Guide"
-      className="fixed bottom-[74px] right-2.5 sm:bottom-24 sm:right-6 xl:bottom-6 xl:right-6 z-50 flex flex-col items-end select-none pointer-events-none touch-manipulation"
+      className="fixed bottom-[74px] right-2.5 sm:bottom-24 sm:right-6 xl:bottom-6 xl:right-6 z-50 flex flex-col items-end select-none pointer-events-none touch-manipulation max-w-[calc(100vw-20px)]"
     >
       {/* ── SPEECH BUBBLE (ONLY WHEN EXPLAINING A SECTION) ── */}
       <AnimatePresence>

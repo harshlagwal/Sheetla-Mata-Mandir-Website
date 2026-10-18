@@ -130,7 +130,7 @@ export const TempleHistoryStone: React.FC = () => {
           <span>{isHindi ? 'प्राचीन पाषाण अभिलेख' : 'ANCIENT STONE EPIGRAPH'}</span>
           <span className="w-8 h-px bg-gradient-to-l from-transparent to-[#8a6f3b]" />
         </div>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-rozha text-[#f1ece1] tracking-wide font-normal mb-2.5">
+        <h2 className="text-lg xs:text-xl sm:text-3xl md:text-4xl font-rozha text-[#f1ece1] tracking-wide font-normal mb-2.5">
           {isHindi ? 'देवभूमि का ऐतिहासिक पाषाण स्मृति-फलक' : 'Historical Stone Epigraph of Devbhoomi'}
         </h2>
         <p className="text-xs sm:text-sm text-[#a8a090] max-w-xl mx-auto leading-relaxed">
@@ -186,9 +186,9 @@ export const TempleHistoryStone: React.FC = () => {
             <h3 className="carved-heading text-xl sm:text-2xl md:text-3xl font-rozha tracking-wide font-normal leading-tight">
               {isHindi ? 'श्री शीतला माता मंदिर' : 'Shree Sheetla Mata Mandir'}
             </h3>
-            <div className="carved-subtitle text-xs sm:text-sm font-medium mt-1 tracking-wider text-[#c5a059] flex items-center justify-center gap-2">
+            <div className="carved-subtitle text-[11px] sm:text-sm font-medium mt-1 tracking-wider text-[#c5a059] flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 text-center">
               <span>{isHindi ? 'लगदेवी (हिमाचल प्रदेश)' : 'Village Lagdevi, Himachal Pradesh'}</span>
-              <span className="text-[#5a4622]">•</span>
+              <span className="text-[#5a4622] hidden xs:inline">•</span>
               <span>{isHindi ? 'ऐतिहासिक परिचय' : 'Historical Chronicle'}</span>
             </div>
           </div>

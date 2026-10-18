@@ -17,6 +17,7 @@ import {
   Heart,
   Shield
 } from 'lucide-react';
+import { LotusWatermark } from '../components/common/LotusWatermark';
 
 interface Milestone {
   year: string;
@@ -69,11 +70,13 @@ export const Village: React.FC = () => {
   const isTimelineInView = useInView(timelineRef, { once: false, amount: 0.25 });
 
   return (
-    <div className="w-full bg-[#f8f6f2] text-slate-900 selection:bg-amber-500/20 selection:text-amber-900 pt-28 sm:pt-32 pb-24 overflow-x-hidden min-h-screen">
+    <div className="relative w-full max-w-full bg-[#f8f6f2] text-slate-900 selection:bg-amber-500/20 selection:text-amber-900 pt-28 sm:pt-32 pb-24 overflow-x-hidden min-h-screen">
       
       {/* ── 1. CENTERED EDITORIAL HERO (ABOUT OUR VILLAGE) ── */}
-      <section className="relative px-4 sm:px-6 max-w-[1240px] mx-auto text-center flex flex-col items-center mb-10 sm:mb-12">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gradient-to-b from-amber-400/15 via-amber-200/5 to-transparent blur-3xl pointer-events-none -z-10" />
+      <section className="relative px-4 sm:px-6 max-w-[1240px] mx-auto text-center flex flex-col items-center mb-10 sm:mb-12 overflow-hidden">
+        <LotusWatermark position="top-right" size="lg" opacity={0.06} />
+        <LotusWatermark position="bottom-left" size="lg" opacity={0.06} mirrored />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[300px] bg-gradient-to-b from-amber-400/15 via-amber-200/5 to-transparent blur-3xl pointer-events-none -z-10" />
 
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-900 text-xs font-semibold mb-3 backdrop-blur-xs shadow-2xs">
           <Sparkles className="w-3.5 h-3.5 text-amber-600 shrink-0" />
@@ -84,7 +87,7 @@ export const Village: React.FC = () => {
           </span>
         </div>
 
-        <h1 className="font-google text-[2.2rem] sm:text-[2.8rem] md:text-[3.2rem] font-bold text-slate-950 tracking-[-0.02em] leading-[1.15] max-w-3xl">
+        <h1 className="font-google text-[1.55rem] xs:text-[1.85rem] sm:text-[2.8rem] md:text-[3.2rem] font-bold text-slate-950 tracking-[-0.02em] leading-[1.18] max-w-3xl">
           {isHindi ? 'हमारे गाँव के बारे में' : 'About Our Village'}
         </h1>
 
@@ -109,7 +112,8 @@ export const Village: React.FC = () => {
         {/* ══════════════════════════════════════════════════════════════
             THE FORMAL WHITE REPORT CARD (APPLE / GOOGLE DOSSIER STYLE)
            ══════════════════════════════════════════════════════════════ */}
-        <article className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-[0_4px_30px_rgba(0,0,0,0.04)] p-6 sm:p-10 md:p-14 space-y-10 sm:space-y-12">
+        <article className="relative bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-[0_4px_30px_rgba(0,0,0,0.04)] p-6 sm:p-10 md:p-14 space-y-10 sm:space-y-12 overflow-hidden">
+          <LotusWatermark position="bottom-right" size="lg" opacity={0.04} />
           
           {/* ── DOCUMENT HEADER ── */}
           <header className="border-b border-slate-200 pb-8 space-y-3">
@@ -123,17 +127,17 @@ export const Village: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="font-google text-2xl sm:text-3xl md:text-4xl font-bold text-slate-950 tracking-[-0.02em] leading-tight">
+            <h2 className="font-google text-lg xs:text-xl sm:text-3xl md:text-4xl font-bold text-slate-950 tracking-[-0.02em] leading-tight">
               {isHindi ? 'लगदेवी गाँव रिपोर्ट' : 'Village Lagdevi Comprehensive Report'}
             </h2>
 
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-slate-600 pt-1 font-mono">
+            <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-5 gap-y-1 text-xs text-slate-600 pt-1 font-mono">
               <span>{isHindi ? 'तहसील: बमसन (तौणी देवी)' : 'Tehsil: Bamsan (Tauni Devi)'}</span>
-              <span>•</span>
+              <span className="text-slate-300 hidden xs:inline">•</span>
               <span>{isHindi ? 'पंचायत: लाग (काडियार)' : 'Panchayat: Lag (Kadhiyar)'}</span>
-              <span>•</span>
+              <span className="text-slate-300 hidden sm:inline">•</span>
               <span>{isHindi ? 'पिनकोड: 177022' : 'Pincode: 177022'}</span>
-              <span>•</span>
+              <span className="text-slate-300 hidden xs:inline">•</span>
               <span>{isHindi ? 'जनगणना कोड: 62/19' : 'Census Code: 62/19'}</span>
             </div>
           </header>
@@ -162,7 +166,7 @@ export const Village: React.FC = () => {
           {/* ── 2.0 सत्यापित तथ्य (STRUCTURED DEMOGRAPHIC STATS & CIVIC DATA) ── */}
           <section className="space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <h3 className="font-google text-lg sm:text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+              <h3 className="font-google text-base sm:text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0" />
                 <span>{isHindi ? '2.0 सत्यापित जनसांख्यिकी तथ्य' : '2.0 Verified Demographic & Administrative Facts'}</span>
               </h3>
